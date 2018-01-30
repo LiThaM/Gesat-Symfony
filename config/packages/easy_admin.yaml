@@ -5,29 +5,44 @@
 #        - App\Entity\Category
 #        - App\Entity\User
 easy_admin:
+    list:
+        actions:
+        ##ACTIONS DE LOS FORMULARIOS DISEÑO Y VISUALIZACIÓN
+            - { name: 'show', icon: 'search', label: '', title: 'Revisar' }
+            - { name: 'edit', icon: 'pencil', label: '', title: 'Editar' }
+            - { name: 'delete', icon: 'trash', label: '', title: 'Delete' }
+
     entities:
         ##
         FichaSAT:
             class: App\Entity\FichaSAT
-            form:
-                title: 'Nueva Ficha Tecnica'
-                form_options: { validation_groups: ['Default'] }
-            new:
-                form_options: { validation_groups: ['Default', 'FichaSAT'] }
-            edit:
-                title:  'Edit customer'
-        ##
+            #help: 'Global message displayed in all views'   
+            
         Clientes:
             class: App\Entity\Clientes
-            form:
-                title: 'Nuevo cliente'
-                form_options: { validation_groups: ['Default'] }
-            new:
-                form_options: { validation_groups: ['Default', 'Clientes'] }
-            edit:
-                title:  'Edit customer'
+        Revisiones:
+            class: App\Entity\Revisiones
     design:
+        
         brand_color: 'grey'
-        color_scheme: 'light'
+        color_scheme: 'dark'
+
+        menu:
+            - entity: 'Clientes'
+              icon: 'user-circle'
+              children:
+                - { label: 'Nuevo Cliente', icon: 'user-plus', url: '?action=new&entity=Clientes' }
+                - { label: 'Listado de Clientes', icon: 'users', url: '?action=list&entity=Clientes' }
+            - entity: 'FichaSAT'
+              icon: 'bug'
+              children:
+                - { label: 'Nueva Ficha', icon: 'user-plus', url: '?action=new&entity=FichaSAT' }
+                - { label: 'Listado de Fichas', icon: 'users', url: '?action=list&entity=FichaSAT' }
+            - entity: 'Revisiones'
+              icon: 'heartbeat'
+              children:
+                - { label: 'Nueva Revisión', icon: 'user-plus', url: '?action=new&entity=Revisiones' }
+                - { label: 'Listado de Revisiones', icon: 'users', url: '?action=list&entity=Revisiones' }
+
 
     site_name: 'GeSAT'
