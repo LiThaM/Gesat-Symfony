@@ -9,6 +9,12 @@
 # The configuration options are explained in detail in the bundle documentation,
 # which is published at https://github.com/javiereguiluz/EasyAdminBundle
 easy_admin:
+    list:
+        actions:
+        ##ACTIONS DE LOS FORMULARIOS DISEÑO Y VISUALIZACIÓN
+            - { name: 'show', icon: 'search', label: '', title: 'Revisar' }
+            - { name: 'edit', icon: 'pencil', label: '', title: 'Editar' }
+            - { name: 'delete', icon: 'trash', label: '', title: 'Delete' }
     design:
         menu:
           - entity: 'Clientes'
