@@ -4,45 +4,64 @@
 #        - App\Entity\Product
 #        - App\Entity\Category
 #        - App\Entity\User
-easy_admin:
-    list:
-        actions:
-        ##ACTIONS DE LOS FORMULARIOS DISEÑO Y VISUALIZACIÓN
-            - { name: 'show', icon: 'search', label: '', title: 'Revisar' }
-            - { name: 'edit', icon: 'pencil', label: '', title: 'Editar' }
-            - { name: 'delete', icon: 'trash', label: '', title: 'Delete' }
+# If you just need a quick backend for your Symfony application, this is the
+# only configuration you must define in this file:
+#
+# easy_admin:
+#     entities:
+#         - AppBundle\Entity\Category
+#         - AppBundle\Entity\Product
+#         - AppBundle\Entity\Purchase
+#         - AppBundle\Entity\PurchaseItem
+#         - AppBundle\Entity\User
+#
+# In this demo application, the configuration is split into several small files
+# to show an alternative way to define the configuration for complex backends.
+#
+# The configuration options are explained in detail in the bundle documentation,
+# which is published at https://symfony.com/doc/current/bundles/EasyAdminBundle/index.html
+#
+imports:
+    - { resource: easy_admin/ }
+# easy_admin:
+#     list:
+#         actions:
+#         ##ACTIONS DE LOS FORMULARIOS DISEÑO Y VISUALIZACIÓN
+#             - { name: 'show', icon: 'search', label: '', title: 'Revisar' }
+#             - { name: 'edit', icon: 'pencil', label: '', title: 'Editar' }
+#             - { name: 'delete', icon: 'trash', label: '', title: 'Delete' }
 
-    entities:
-        ##
-        FichaSat:
-            class: App\Entity\FichaSat
-            #help: 'Global message displayed in all views'   
+#     entities:
+#         ##
+#         FichaSat:
+#             class: App\Entity\FichaSat
+#             #help: 'Global message displayed in all views'   
             
-        Clientes:
-            class: App\Entity\Clientes
-        Revisiones:
-            class: App\Entity\Revisiones
-    design:
+#         Clientes:
+#             class: App\Entity\Clientes
+#         Revisiones:
+#             class: App\Entity\Revisiones
+#     design:
         
-        brand_color: 'grey'
-        color_scheme: 'dark'
+#         brand_color: 'grey'
+#         color_scheme: 'dark'
 
-        menu:
-            - entity: 'Clientes'
-              icon: 'user-circle'
-              children:
-                - { label: 'Nuevo Cliente', icon: 'user-plus', url: '?action=new&entity=Clientes' }
-                - { label: 'Listado de Clientes', icon: 'users', url: '?action=list&entity=Clientes' }
-            - entity: 'FichaSat'
-              icon: 'bug'
-              children:
-                - { label: 'Nueva Ficha', icon: 'user-plus', url: '?action=new&entity=FichaSat' }
-                - { label: 'Listado de Fichas', icon: 'users', url: '?action=list&entity=FichaSat' }
-            - entity: 'Revisiones'
-              icon: 'heartbeat'
-              children:
-                - { label: 'Nueva Revisión', icon: 'user-plus', url: '?action=new&entity=Revisiones' }
-                - { label: 'Listado de Revisiones', icon: 'users', url: '?action=list&entity=Revisiones' }
+#         menu:
+#             - entity: 'Clientes'
+#               icon: 'user-circle'
+#               children:
+#                 - { label: 'Nuevo Cliente', icon: 'user-plus', url: '?action=new&entity=Clientes' }
+#                 - { label: 'Listado de Clientes', icon: 'users', url: '?action=list&entity=Clientes' }
+#             - entity: 'FichaSat'
+#               icon: 'bug'
+#               children:
+#                 - { label: 'Nueva Ficha', icon: 'user-plus', url: '?action=new&entity=FichaSat' }
+#                 - { label: 'Listado de Fichas', icon: 'users', url: '?action=list&entity=FichaSat' }
+#             - entity: 'Revisiones'
+#               icon: 'heartbeat'
+#               children:
+#                 - { label: 'Nueva Revisión', icon: 'user-plus', url: '?action=new&entity=Revisiones' }
+#                 - { label: 'Listado de Revisiones', icon: 'users', url: '?action=list&entity=Revisiones' }
 
 
-    site_name: 'GeSAT'
+#     site_name: 'GeSAT'
