@@ -14,8 +14,8 @@ easy_admin:
 
     entities:
         ##
-        FichaSAT:
-            class: App\Entity\FichaSAT
+        FichaSat:
+            class: App\Entity\FichaSat
             #help: 'Global message displayed in all views'   
             
         Clientes:
@@ -33,11 +33,11 @@ easy_admin:
               children:
                 - { label: 'Nuevo Cliente', icon: 'user-plus', url: '?action=new&entity=Clientes' }
                 - { label: 'Listado de Clientes', icon: 'users', url: '?action=list&entity=Clientes' }
-            - entity: 'FichaSAT'
+            - entity: 'FichaSat'
               icon: 'bug'
               children:
-                - { label: 'Nueva Ficha', icon: 'user-plus', url: '?action=new&entity=FichaSAT' }
-                - { label: 'Listado de Fichas', icon: 'users', url: '?action=list&entity=FichaSAT' }
+                - { label: 'Nueva Ficha', icon: 'user-plus', url: '?action=new&entity=FichaSat' }
+                - { label: 'Listado de Fichas', icon: 'users', url: '?action=list&entity=FichaSat' }
             - entity: 'Revisiones'
               icon: 'heartbeat'
               children:

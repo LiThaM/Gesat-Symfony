@@ -18,10 +18,10 @@ class Revisiones{
     private $id;
 
      /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\FichaSAT")
+     * @ORM\ManyToOne(targetEntity="App\Entity\FichaSat")
      * @ORM\JoinColumn(name="clientes", referencedColumnName="id")
      */
-    private $idFichaSAT;
+    private $idFichaSat;
 
     /**
      * @ORM\Column(type="string", length=25)
@@ -56,21 +56,21 @@ class Revisiones{
     }
 
     /**
-     * Get the value of idFichaSAT
+     * Get the value of idFichaSat
      */ 
-    public function getIdFichaSAT()
+    public function getIdFichaSat()
     {
-        return $this->idFichaSAT;
+        return $this->idFichaSat;
     }
 
     /**
-     * Set the value of idFichaSAT
+     * Set the value of idFichaSat
      *
      * @return  self
      */ 
-    public function setIdFichaSAT($idFichaSAT)
+    public function setIdFichaSat($idFichaSat)
     {
-        $this->idFichaSAT = $idFichaSAT;
+        $this->idFichaSat = $idFichaSat;
 
         return $this;
     }
