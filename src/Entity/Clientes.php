@@ -21,8 +21,13 @@ class Clientes
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $nombreApellidos;
- 
+    private $nombre;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $apellidos;
+    
     /**
      * @ORM\Column(type="string", length=10)
      */
@@ -31,16 +36,21 @@ class Clientes
     /**
      * @ORM\Column(type="string", length=10)
      */
-    private $telefono;
+    private $telefonoFijo;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $movil;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
     private $email;
 
-     /**
+    /**
      * @ORM\Column(type="datetime")
-     */
+    */
     private $fechaRegistro;
 
     /**
@@ -53,31 +63,9 @@ class Clientes
         return $this->id;
     }
     
-
-
-    /**
-     * Get the value of nombreApellidos
-     */ 
-    public function getNombreApellidos()
-    {
-        return $this->nombreApellidos;
-    }
-
-    /**
-     * Set the value of nombreApellidos
-     *
-     * @return  self
-     */ 
-    public function setNombreApellidos($nombreApellidos)
-    {
-        $this->nombreApellidos = $nombreApellidos;
-
-        return $this;
-    }
-
     /**
      * Get the value of dni
-     */ 
+     */
     public function getDni()
     {
         return $this->dni;
@@ -87,7 +75,7 @@ class Clientes
      * Set the value of dni
      *
      * @return  self
-     */ 
+     */
     public function setDni($dni)
     {
         $this->dni = $dni;
@@ -96,28 +84,8 @@ class Clientes
     }
 
     /**
-     * Get the value of telefono
-     */ 
-    public function getTelefono()
-    {
-        return $this->telefono;
-    }
-
-    /**
-     * Set the value of telefono
-     *
-     * @return  self
-     */ 
-    public function setTelefono($telefono)
-    {
-        $this->telefono = $telefono;
-
-        return $this;
-    }
-
-    /**
      * Get the value of email
-     */ 
+     */
     public function getEmail()
     {
         return $this->email;
@@ -127,7 +95,7 @@ class Clientes
      * Set the value of email
      *
      * @return  self
-     */ 
+     */
     public function setEmail($email)
     {
         $this->email = $email;
@@ -137,7 +105,8 @@ class Clientes
 
     /**
      * Get the value of fechaRegistro
-     */ 
+     * @return \DateTime
+     */
     public function getFechaRegistro()
     {
         return $this->fechaRegistro;
@@ -147,34 +116,103 @@ class Clientes
      * Set the value of fechaRegistro
      *
      * @return  self
-     */ 
+     */
     public function setFechaRegistro($fechaRegistro)
     {
-        $this->fechaRegistro = $fechaRegistro;
+        $this->fechaRegistro = new \DateTime('now');
+
+        return $this;
+    }
+    
+    public function __toString()
+    {
+        return $this->id."# ".$this->apellidos;
+    }
+
+    /**
+     * Get the value of movil
+     */ 
+    public function getMovil()
+    {
+        return $this->movil;
+    }
+
+    /**
+     * Set the value of movil
+     *
+     * @return  self
+     */ 
+    public function setMovil($movil)
+    {
+        $this->movil = $movil;
 
         return $this;
     }
 
-    ## Traspaso a String el ID para que Aparezca el nombre
-    public function __toString()
+    /**
+     * Get the value of nombre
+     */ 
+    public function getNombre()
     {
-        return $this->nombreApellidos;
-    }
-
-
-    public function utcdatetime()
-    {
-        $this->created = new \DateTime("now");
+        return $this->nombre;
     }
 
     /**
-     * Gets triggered every time on update
-
-     * @ORM\PreUpdate
-     */
-    public function onPreUpdate()
+     * Set the value of nombre
+     *
+     * @return  self
+     */ 
+    public function setNombre($nombre)
     {
-        $this->updated = new \DateTime("now");
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of telefonoFijo
+     */ 
+    public function getTelefonoFijo()
+    {
+        return $this->telefonoFijo;
+    }
+
+    /**
+     * Set the value of telefonoFijo
+     *
+     * @return  self
+     */ 
+    public function setTelefonoFijo($telefonoFijo)
+    {
+        $this->telefonoFijo = $telefonoFijo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of apellidos
+     */ 
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * Set the value of apellidos
+     *
+     * @return  self
+     */ 
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    #CONSTRUCTOR
+    function __construct() 
+    {
+        #añade la hora 
+        $this->fechaRegistro = new \DateTime();
     }
 }
-?>

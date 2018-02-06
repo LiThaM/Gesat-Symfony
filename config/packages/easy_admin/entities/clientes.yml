@@ -10,3 +10,25 @@ easy_admin:
     entities:
         Clientes:
             class: App\Entity\Clientes
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6', label: 'Información basica', icon: 'pencil' }
+                    - { property: 'nombre', label: 'Nombre', icon: 'customer'}
+                    - { property: 'apellidos', label: 'Apellidos'}
+                    - { property: 'dni', label: 'DNI/NIE'}
+                    - { type: 'group', css_class: 'col-sm-6', label: 'Información de contacto', icon: 'phone' }
+                    - { property: 'movil', label: 'Teléfono Móvil'}
+                    - { property: 'telefonoFijo', label: 'Teléfono Fijo'}
+                    - { property: 'email', label: 'Correo Electrónico'}
+                    #- { property: 'fechaRegistro', type: 'datetime', type_options: {input: 'datetime'}}              
+            list:
+                sort: ['fechaRegistro', 'DESC']
+                fields:
+                    - id
+                    - nombre
+                    - apellidos
+                    - dni
+                    - movil
+                    - fechaRegistro
+
+                

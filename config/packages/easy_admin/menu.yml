@@ -30,6 +30,6 @@ easy_admin:
           - entity: 'Revisiones'
             icon: 'heartbeat'
             children:
-              - { label: 'Nueva Revisión', icon: 'comment', url: '?action=new&entity=Revisiones' }
-              - { label: 'Listado de Revisiones', icon: 'users', url: '?action=list&entity=Revisiones' }
+              - { label: 'Nueva Revisión', icon: 'heart', url: '?action=new&entity=Revisiones' }
+              - { label: 'Listado de Revisiones', icon: 'medkit', url: '?action=list&entity=Revisiones' }
 

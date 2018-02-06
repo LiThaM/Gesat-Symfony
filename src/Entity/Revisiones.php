@@ -33,6 +33,11 @@ class Revisiones{
      */
     private $descripcionAveria; 
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $setUpdateAt;
+
 
 
     /**
@@ -111,6 +116,26 @@ class Revisiones{
     public function setDescripcionAveria($descripcionAveria)
     {
         $this->descripcionAveria = $descripcionAveria;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setUpdateAt
+     */ 
+    public function getSetUpdateAt()
+    {
+        return $this->setUpdateAt;
+    }
+
+    /**
+     * Set the value of setUpdateAt
+     *
+     * @return  self
+     */ 
+    public function setSetUpdateAt($setUpdateAt)
+    {
+        $this->setUpdateAt = $setUpdateAt;
 
         return $this;
     }
