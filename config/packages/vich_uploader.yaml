@@ -3,8 +3,12 @@ vich_uploader:
     
     mappings:
         ficha_imagenes:
-            uri_prefix:         '/images/fichacte'
-            upload_destination: '%kernel.project_dir%/public/images/fichacte'
+            uri_prefix:             '/images/fichacte'
+            upload_destination:     '%kernel.project_dir%/public/images/fichacte'
+            namer:                  vich_uploader.namer_uniqid
+            inject_on_load:         true
+            delete_on_update:       true
+            delete_on_remove:       true
 
     #mappings:
     #    products:

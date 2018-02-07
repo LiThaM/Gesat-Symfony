@@ -10,6 +10,8 @@ easy_admin:
     entities:
         Clientes:
             class: App\Entity\Clientes
+            label: 'Ficha Clientes'
+            disabled_actions: ['show']
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6', label: 'Información basica', icon: 'pencil' }
@@ -19,16 +21,29 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-6', label: 'Información de contacto', icon: 'phone' }
                     - { property: 'movil', label: 'Teléfono Móvil'}
                     - { property: 'telefonoFijo', label: 'Teléfono Fijo'}
-                    - { property: 'email', label: 'Correo Electrónico'}
-                    #- { property: 'fechaRegistro', type: 'datetime', type_options: {input: 'datetime'}}              
+                    - { property: 'email', type: 'email', label: 'Correo Electrónico'}
             list:
                 sort: ['fechaRegistro', 'DESC']
                 fields:
-                    - id
-                    - nombre
-                    - apellidos
-                    - dni
-                    - movil
-                    - fechaRegistro
+                    - { property: 'id', type: 'int'}
+                    - { property: 'nombre', type: 'string'}
+                    - { property: 'apellidos', type: 'string'}
+                    - { property: 'dni', type: 'string', label: 'DNI'}
+                    - { property: 'movil', type: 'tel'}
+                    - { property: 'email', type: 'email', label: 'Correo Electrónico'}
+                    - { property: 'fechaRegistro', format: 'd/m/Y H:i:s' }
+            # show:
+            #     title: '%%entity_label%% (#%%entity_id%%)'
+            #     fields:
+            #         # - { type: 'group', css_class: 'col-sm-6', label: 'Información basica', icon: 'pencil' }
+            #         - { property: 'nombre', type: 'string'}
+            #         - { property: 'apellidos', type: 'string'}
+            #         - { property: 'dni', type: 'string', label: 'DNI'}
+            #         - { property: 'movil', type: 'tel', label: 'Teléfono Móvil'}
+            #         - { property: 'telefonoFijo', type: 'tel', label: 'Teléfono Fijo'}
+            #         - { property: 'email', type: 'email', label: 'Correo Electrónico'}                    
+            #         - { property: 'fechaRegistro', format: 'd/m/Y H:i:s' }                
+
+                    
 
                 

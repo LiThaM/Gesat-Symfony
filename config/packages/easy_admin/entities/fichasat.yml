@@ -11,11 +11,13 @@ easy_admin:
     entities:
         FichaSat:
             class: App\Entity\FichaSat
+            disabled_actions: ['show']            
             #help: 'Global message displayed in all views'
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-8', label: 'Información Cliente', icon: 'pencil' }
                     - { property: 'nameClientes', label: 'Selecciona cliente', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\Clientes' }}
+                    - { type: 'divider' }
                     - { property: 'descripcionAveria', label: 'Información del cliente'}
                     - { property: 'accesorios', label: 'Accesorios'}
                     - { type: 'group', css_class: 'col-sm-4', label: 'Información Terminal', icon: 'pencil' }
@@ -26,8 +28,16 @@ easy_admin:
                     - { property: 'numeroSerie', label: 'Numero de Serie'}
                     - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Adjuntos', icon: 'paperclip' }
                     - { property: 'imagenFicha', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { type: 'divider' }
                     - { property: 'imagenFicha2', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { type: 'divider' }
                     - { property: 'imagenFicha3', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
-            show:
+            list:
                 fields:
-                  - { property: 'imagen', type: 'image', base_path: '%app.path.ficha_imagenes%' }
+                    - id
+                    - { property: 'nameClientes', label: 'Cliente'}
+                    - { property: 'modeloEquipo', label: 'Marca & Modelo'}
+                    - { property: 'imei', label: 'Numero IMEI'}
+                    - { property: 'numeroSerie', label: 'Numero de Serie'}
+                    - { property: 'imagen', type: 'image', label: 'Imagen Estado', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'fechaEntrada', format: 'd/m/Y H:i:s' }  

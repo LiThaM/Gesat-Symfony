@@ -418,7 +418,7 @@ return $this;
      *
      * @return  self
      */ 
-    public function setImagen3(string $imagen3)
+    public function setImagen3($imagen3)
     {
         $this->imagen3 = $imagen3;
 
@@ -442,11 +442,10 @@ return $this;
      *
      * @return  self
      */ 
-    public function setImagen(string $imagen)
+    public function setImagen($imagen)
     {
-        $this->imagen = $imagen;
+        return $this->imagen = $imagen;
 
-        return $this;
     }
 
     /**
@@ -466,7 +465,7 @@ return $this;
      *
      * @return  self
      */ 
-    public function setImagen2(string $imagen2)
+    public function setImagen2($imagen2)
     {
         $this->imagen2 = $imagen2;
 
