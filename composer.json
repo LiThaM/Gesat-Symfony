@@ -1,5 +1,5 @@
 {
-    "type": "project",
+    "type": "Gesat",
     "license": "proprietary",
     "require": {
         "php": "^7.1.3",
@@ -58,7 +58,7 @@
     "extra": {
         "symfony": {
             "id": "01C4N84TGNPS4CY2WVKCHVWXQM",
-            "allow-contrib": false
+            "allow-contrib": true
         }
     }
 }

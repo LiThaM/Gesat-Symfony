@@ -17,19 +17,22 @@ easy_admin:
             - { name: 'delete', icon: 'trash', label: '', title: 'Delete' }
     design:
         menu:
+          #Entidad Clientes
           - entity: 'Clientes'
             icon: 'user-circle'
             children:
-              - { label: 'Nuevo Cliente', icon: 'user-plus', url: '?action=new&entity=Clientes' }
-              - { label: 'Listado de Clientes', icon: 'users', url: '?action=list&entity=Clientes' }
+              - { entity: 'Clientes', label: 'Nuevo Cliente', icon: 'user-plus', params: { action: 'new' } }
+              - { entity: 'Clientes', label: 'Listado de Clientes', icon: 'users'}
+          #Entidad FichaSAT    
           - entity: 'FichaSat'
             icon: 'bug'
             children:
-              - { label: 'Nueva Ficha', icon: 'user-plus', url: '?action=new&entity=FichaSat' }
-              - { label: 'Listado de Fichas', icon: 'users', url: '?action=list&entity=FichaSat' }
+              - { entity: 'FichaSat', label: 'Nueva Ficha', icon: 'user-plus', params: { action: 'new' } }
+              - { entity: 'FichaSat', label: 'Listado de Fichas', icon: 'users'}
+          #Entidad Revisiones
           - entity: 'Revisiones'
             icon: 'heartbeat'
             children:
-              - { label: 'Nueva Revisión', icon: 'heart', url: '?action=new&entity=Revisiones' }
-              - { label: 'Listado de Revisiones', icon: 'medkit', url: '?action=list&entity=Revisiones' }
+              - { entity: 'Revisiones', label: 'Nueva Revisión', icon: 'heartbeat', params: { action: 'new' } }
+              - { entity: 'Revisiones', label: 'Listado de', icon: 'medkit' }
 

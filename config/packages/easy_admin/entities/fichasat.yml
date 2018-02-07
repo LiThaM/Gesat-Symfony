@@ -6,16 +6,6 @@
 #
 # The configuration options are explained in detail in the bundle documentation,
 # which is published at https://github.com/javiereguiluz/EasyAdminBundle
-parameters:
-    app.path.ficha_imagenes: /uploads/images/fichacte
-
-
-vich_uploader:
-    # ...
-    mappings:
-        ficha_imagenes:
-            uri_prefix:         '%app.path.ficha_imagenes%'
-            upload_destination: '%kernel.root_dir%/../../public/uploads/images/fichacte'
 
 easy_admin:
     entities:
@@ -24,15 +14,20 @@ easy_admin:
             #help: 'Global message displayed in all views'
             form:
                 fields:
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Información Cliente', icon: 'pencil' }
                     - { property: 'nameClientes', label: 'Selecciona cliente', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\Clientes' }}
-                    - { property: 'modeloEquipo', label: 'Marca & Modelo'}
-                    - { property: 'imei', label: 'Numero IMEI'}
-                    - { property: 'numeroSerie', label: 'Numero de Serie'}
                     - { property: 'descripcionAveria', label: 'Información del cliente'}
                     - { property: 'accesorios', label: 'Accesorios'}
-                    - { property: 'imagenFicha', type: 'file', base_path: '%app.path.ficha_imagenes%' }
-                    - { property: 'imagenFicha2', type: 'file', base_path: '%app.path.ficha_imagenes%' }
-                    - { property: 'imagenFicha3', type: 'file', base_path: '%app.path.ficha_imagenes%' }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Información Terminal', icon: 'pencil' }
+                    - { property: 'modeloEquipo', label: 'Marca & Modelo',
+                        help: 'Ejemplo: Samsung J5 2016 (F500N)'}
+                    - { property: 'imei', label: 'Numero IMEI',
+                        help: 'Ejemplo: 010101010100101S'}
+                    - { property: 'numeroSerie', label: 'Numero de Serie'}
+                    - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Adjuntos', icon: 'paperclip' }
+                    - { property: 'imagenFicha', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha2', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha3', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
             show:
                 fields:
                   - { property: 'imagen', type: 'image', base_path: '%app.path.ficha_imagenes%' }
