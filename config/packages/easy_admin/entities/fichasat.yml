@@ -6,8 +6,33 @@
 #
 # The configuration options are explained in detail in the bundle documentation,
 # which is published at https://github.com/javiereguiluz/EasyAdminBundle
+parameters:
+    app.path.ficha_imagenes: /uploads/images/fichacte
+
+
+vich_uploader:
+    # ...
+    mappings:
+        ficha_imagenes:
+            uri_prefix:         '%app.path.ficha_imagenes%'
+            upload_destination: '%kernel.root_dir%/../../public/uploads/images/fichacte'
+
 easy_admin:
     entities:
         FichaSat:
             class: App\Entity\FichaSat
-            #help: 'Global message displayed in all views' 
+            #help: 'Global message displayed in all views'
+            form:
+                fields:
+                    - { property: 'nameClientes', label: 'Selecciona cliente', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\Clientes' }}
+                    - { property: 'modeloEquipo', label: 'Marca & Modelo'}
+                    - { property: 'imei', label: 'Numero IMEI'}
+                    - { property: 'numeroSerie', label: 'Numero de Serie'}
+                    - { property: 'descripcionAveria', label: 'Información del cliente'}
+                    - { property: 'accesorios', label: 'Accesorios'}
+                    - { property: 'imagenFicha', type: 'file', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha2', type: 'file', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha3', type: 'file', base_path: '%app.path.ficha_imagenes%' }
+            show:
+                fields:
+                  - { property: 'imagen', type: 'image', base_path: '%app.path.ficha_imagenes%' }

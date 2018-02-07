@@ -11,7 +11,8 @@
         "symfony/lts": "^4@dev",
         "symfony/profiler-pack": "^1.0",
         "symfony/web-server-bundle": "^4.0",
-        "symfony/yaml": "^4.0"
+        "symfony/yaml": "^4.0",
+        "vich/uploader-bundle": "^1.8"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.2",
