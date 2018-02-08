@@ -1,474 +1,218 @@
 <?php
 
-namespace App\Entity; 
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
- 
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="entradas_sat")
- * @Vich\Uploadable
+ * @ORM\Table(name="clientes")
  */
-class FichaSat {
-/**
- * @ORM\Id
- * @ORM\GeneratedValue
- * @ORM\Column(type="integer")
- */
-private $id; 
-
-/**
- * @ORM\ManyToOne(targetEntity="App\Entity\Clientes")
- * @ORM\JoinColumn(name="clientes", referencedColumnName="id")
- */
-private $nameClientes; 
-
-/**
- * @ORM\Column(type="string", length=100)
- */
-private $modeloEquipo; 
-
-/**
- * @ORM\Column(type="string", length=100)
- */
-private $imei; 
-
-/**
- * @ORM\Column(type="string", length=100, nullable=true)
- */
-private $numeroSerie; 
-
-/**
- * @ORM\Column(type="text")
- */
-private $descripcionAveria; 
-
-/**
- * @ORM\Column(type="text", nullable=true)
- */
-private $accesorios; 
-
-
-/**
- * @ORM\Column(type="boolean", nullable=true)
- */
-private $revisadoTecnico;
-
- /**
- * @ORM\Column(type="boolean", nullable=true)
- */
-private $entregadoCliente;
-
-/**
- * @ORM\Column(type="datetime")
- */
-private $fechaEntrada; 
-
-/**
- * @ORM\Column(type="datetime", nullable=true)
- */
-private $fechaReparado; 
-
-/**
- * @ORM\Column(type="datetime", nullable=true)
- */
-private $fechaEntregado;
-
-/**
- * @Vich\UploadableField(mapping="ficha_imagenes", fileNameProperty="imagen")
- * @var File
- */
-private $imagenFicha;
-
-public function setImagenFicha(File $imagen = null)
-    {
-        $this->imagenFicha = $imagen;
-
-        // VERY IMPORTANT:
-        // It is required that at least one field changes if you are using Doctrine,
-        // otherwise the event listeners won't be called and the file is lost
-        if ($imagen) {
-            // if 'updatedAt' is not defined in your entity, use another property
-            $this->fechaEntrada = new \DateTime('now');
-        }
-    }
-
-    public function getImagenFicha()
-    {
-        return $this->imagenFicha;
-    }
-
+class Clientes
+{
     /**
-     * @ORM\Column(type="string", length=255)
-     * @var string
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
-    private $imagen;
-    
+    private $id;
 
-/**
- * @Vich\UploadableField(mapping="ficha_imagenes", fileNameProperty="imagen2")
- * @var File
- */
-private $imagenFicha2;
-
-
-public function setImagenFicha2(File $imagen2 = null)
-    {
-        $this->imagenFicha2 = $imagen2;
-
-        // VERY IMPORTANT:
-        // It is required that at least one field changes if you are using Doctrine,
-        // otherwise the event listeners won't be called and the file is lost
-        // if ($imagenFicha2) {
-        //     // // if 'updatedAt' is not defined in your entity, use another property
-        //     // $this->fechaEntrada = new \DateTime('now');
-        // }
-    }
-
-    public function getImagenFicha2()
-    {
-        return $this->imagenFicha2;
-    }
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @var string
+     * @ORM\Column(type="string", length=100)
      */
-    private $imagen2;
-    
-/**
- * @Vich\UploadableField(mapping="ficha_imagenes", fileNameProperty="imagen3")
- * @var File
- */
-private $imagenFicha3;
+    private $nombre;
 
-
-public function setImagenFicha3(File $imagen3 = null)
-    {
-        $this->imagenFicha3 = $imagen3;
-
-        // VERY IMPORTANT:
-        // It is required that at least one field changes if you are using Doctrine,
-        // otherwise the event listeners won't be called and the file is lost
-        // if ($imagenFicha) {
-        //     // if 'updatedAt' is not defined in your entity, use another property
-        //     $this->fechaEntrada = new \DateTime('now');
-        // }
-    }
-
-    public function getImagenFicha3()
-    {
-        return $this->imagenFicha3;
-    }
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @var string
+     * @ORM\Column(type="string", length=100)
      */
-    private $imagen3;
+    private $apellidos;
     
-
-/**
- * Get the value of id
- */ 
-public function getId()
-{
-return $this->id;
-}
-
-
-/**
- * Get the value of modeloEquipo
- */ 
-public function getModeloEquipo()
-{
-return $this->modeloEquipo;
-}
-
-/**
- * Set the value of modeloEquipo
- *
- * @return  self
- */ 
-public function setModeloEquipo($modeloEquipo)
-{
-$this->modeloEquipo = $modeloEquipo;
-
-return $this;
-}
-/**
- * Get the value of descripcionAveria
- */ 
-public function getDescripcionAveria()
-{
-return $this->descripcionAveria;
-}
-
-/**
- * Set the value of descripcionAveria
- *
- * @return  self
- */ 
-public function setDescripcionAveria($descripcionAveria)
-{
-$this->descripcionAveria = $descripcionAveria;
-
-return $this;
-}
-
-/**
- * Get the value of revisadoTecnico
- */ 
-public function getRevisadoTecnico()
-{
-return $this->revisadoTecnico;
-}
-
-/**
- * Set the value of revisadoTecnico
- *
- * @return  self
- */ 
-public function setRevisadoTecnico($revisadoTecnico)
-{
-$this->revisadoTecnico = $revisadoTecnico;
-
-return $this;
-}
-
-/**
- * Get the value of entregadoCliente
- */ 
-public function getEntregadoCliente()
-{
-return $this->entregadoCliente;
-}
-
-/**
- * Set the value of entregadoCliente
- *
- * @return  self
- */ 
-public function setEntregadoCliente($entregadoCliente)
-{
-$this->entregadoCliente = $entregadoCliente;
-
-return $this;
-}
-
-/**
- * Get the value of fechaEntrada
- */ 
-public function getFechaEntrada()
-{
-return $this->fechaEntrada;
-}
-
-
-/**
- * Get the value of nameClientes
- */ 
-public function getNameClientes()
-{
-return $this->nameClientes;
-}
-
-/**
- * Set the value of nameClientes
- *
- * @return  self
- */ 
-public function setNameClientes($nameClientes)
-{
-$this->nameClientes = $nameClientes;
-
-return $this;
-}
-public function __toString()   {
-return $this->modeloEquipo;
-}
-
-/**
- * Set the value of fechaEntrada
- *
- * @return  self
- */ 
-public function setFechaEntrada($fechaEntrada)
-{
-$this->fechaEntrada = $fechaEntrada;
-
-return $this;
-}
-
-/**
- * Get the value of fechaReparado
- */ 
-public function getFechaReparado()
-{
-return $this->fechaReparado;
-}
-
-/**
- * Set the value of fechaReparado
- *
- * @return  self
- */ 
-public function setFechaReparado($fechaReparado)
-{
-$this->fechaReparado = $fechaReparado;
-
-return $this;
-}
-
-/**
- * Get the value of fechaEntregado
- */ 
-public function getFechaEntregado()
-{
-return $this->fechaEntregado;
-}
-
-/**
- * Set the value of fechaEntregado
- *
- * @return  self
- */ 
-public function setFechaEntregado($fechaEntregado)
-{
-$this->fechaEntregado = $fechaEntregado;
-
-return $this;
-}
-
-/**
- * Get the value of imei
- */ 
-public function getImei()
-{
-return $this->imei;
-}
-
-/**
- * Set the value of imei
- *
- * @return  self
- */ 
-public function setImei($imei)
-{
-$this->imei = $imei;
-
-return $this;
-}
-
-/**
- * Get the value of numeroSerie
- */ 
-public function getNumeroSerie()
-{
-return $this->numeroSerie;
-}
-
-/**
- * Set the value of numeroSerie
- *
- * @return  self
- */ 
-public function setNumeroSerie($numeroSerie)
-{
-$this->numeroSerie = $numeroSerie;
-
-return $this;
-}
-
-/**
- * Get the value of accesorios
- */ 
-public function getAccesorios()
-{
-return $this->accesorios;
-}
-
-/**
- * Set the value of accesorios
- *
- * @return  self
- */ 
-public function setAccesorios($accesorios)
-{
-$this->accesorios = $accesorios;
-
-return $this;
-}
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $dni;
+ 
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $telefonoFijo;
 
     /**
-     * Get the value of imagen3
+     * @ORM\Column(type="string", length=10)
+     */
+    private $movil;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="datetime")
+    */
+    private $fechaRegistro;
+
+    /**
+     * Get id
      *
-     * @return  string
-     */ 
-    public function getImagen3()
+     * @return int
+     */
+    public function getId()
     {
-        return $this->imagen3;
+        return $this->id;
+    }
+    
+    /**
+     * Get the value of dni
+     */
+    public function getDni()
+    {
+        return $this->dni;
     }
 
     /**
-     * Set the value of imagen3
-     *
-     * @param  string  $imagen3
+     * Set the value of dni
      *
      * @return  self
-     */ 
-    public function setImagen3($imagen3)
+     */
+    public function setDni($dni)
     {
-        $this->imagen3 = $imagen3;
+        $this->dni = $dni;
 
         return $this;
     }
 
     /**
-     * Get the value of imagen
-     *
-     * @return  string
-     */ 
-    public function getImagen()
+     * Get the value of email
+     */
+    public function getEmail()
     {
-        return $this->imagen;
+        return $this->email;
     }
 
     /**
-     * Set the value of imagen
-     *
-     * @param  string  $imagen
+     * Set the value of email
      *
      * @return  self
-     */ 
-    public function setImagen($imagen)
+     */
+    public function setEmail($email)
     {
-        return $this->imagen = $imagen;
-
-    }
-
-    /**
-     * Get the value of imagen2
-     *
-     * @return  string
-     */ 
-    public function getImagen2()
-    {
-        return $this->imagen2;
-    }
-
-    /**
-     * Set the value of imagen2
-     *
-     * @param  string  $imagen2
-     *
-     * @return  self
-     */ 
-    public function setImagen2($imagen2)
-    {
-        $this->imagen2 = $imagen2;
+        $this->email = $email;
 
         return $this;
+    }
+
+    /**
+     * Get the value of fechaRegistro
+     * @return \DateTime
+     */
+    public function getFechaRegistro()
+    {
+        return $this->fechaRegistro;
+    }
+
+    /**
+     * Set the value of fechaRegistro
+     *
+     * @return  self
+     */
+    public function setFechaRegistro($fechaRegistro)
+    {
+        $this->fechaRegistro = new \DateTime('now');
+
+        return $this;
+    }
+    
+    public function __toString()
+    {
+        return $this->id."# ".$this->nombre." ".$this->apellidos;
+    }
+
+    /**
+     * Get the value of movil
+     */ 
+    public function getMovil()
+    {
+        return $this->movil;
+    }
+
+    /**
+     * Set the value of movil
+     *
+     * @return  self
+     */ 
+    public function setMovil($movil)
+    {
+        $this->movil = $movil;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nombre
+     */ 
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set the value of nombre
+     *
+     * @return  self
+     */ 
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of telefonoFijo
+     */ 
+    public function getTelefonoFijo()
+    {
+        return $this->telefonoFijo;
+    }
+
+    /**
+     * Set the value of telefonoFijo
+     *
+     * @return  self
+     */ 
+    public function setTelefonoFijo($telefonoFijo)
+    {
+        $this->telefonoFijo = $telefonoFijo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of apellidos
+     */ 
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * Set the value of apellidos
+     *
+     * @return  self
+     */ 
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    #CONSTRUCTOR
+    function __construct() 
+    {
+        #añade la hora 
+        $this->fechaRegistro = new \DateTime();
     }
 }
