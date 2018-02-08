@@ -27,12 +27,14 @@ easy_admin:
                         help: 'Ejemplo: 010101010100101S'}
                     - { property: 'numeroSerie', label: 'Numero de Serie'}
                     - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Adjuntos', icon: 'paperclip' }
-                    - { property: 'imagenFicha', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha', label: 'Imágen Terminal', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
                     - { type: 'divider' }
-                    - { property: 'imagenFicha2', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha2', label: 'Imágen Boca Abajo', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
                     - { type: 'divider' }
-                    - { property: 'imagenFicha3', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha3', label: 'Imágen Golpes o Rotura', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
             list:
+                actions:
+                    - { name: 'imprimirFicha', icon: 'print' }
                 fields:
                     - id
                     - { property: 'nameClientes', label: 'Cliente'}
@@ -40,4 +42,6 @@ easy_admin:
                     - { property: 'imei', label: 'Numero IMEI'}
                     - { property: 'numeroSerie', label: 'Numero de Serie'}
                     - { property: 'imagen', type: 'image', label: 'Imagen Estado', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagen2', type: 'image', label: 'Imagen Atrás', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagen3', type: 'image', label: 'Imagen Golpe ', base_path: '%app.path.ficha_imagenes%' }                    
                     - { property: 'fechaEntrada', format: 'd/m/Y H:i:s' }  

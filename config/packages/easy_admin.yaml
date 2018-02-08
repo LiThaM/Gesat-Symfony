@@ -21,6 +21,7 @@
 # The configuration options are explained in detail in the bundle documentation,
 # which is published at https://symfony.com/doc/current/bundles/EasyAdminBundle/index.html
 #
+# In Symfony 4: config/routes/easy_admin.yaml
 imports:
     - { resource: easy_admin/ }
 # easy_admin:
