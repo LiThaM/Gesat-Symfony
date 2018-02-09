@@ -27,12 +27,12 @@ easy_admin:
           - entity: 'FichaSat'
             icon: 'bug'
             children:
-              - { entity: 'FichaSat', label: 'Nueva Ficha', icon: 'user-plus', params: { action: 'new' } }
-              - { entity: 'FichaSat', label: 'Listado de Fichas', icon: 'users'}
+              - { entity: 'FichaSat', label: 'Nueva Ficha', icon: 'cog', params: { action: 'new' } }
+              - { entity: 'FichaSat', label: 'Listado de Fichas', icon: 'cogs'}
           #Entidad Revisiones
           - entity: 'Revisiones'
             icon: 'heartbeat'
             children:
-              - { entity: 'Revisiones', label: 'Nueva Revisión', icon: 'heartbeat', params: { action: 'new' } }
-              - { entity: 'Revisiones', label: 'Listado de', icon: 'medkit' }
+              - { entity: 'Revisiones', label: 'Nueva Revisión', icon: 'microchip', params: { action: 'new' } }
+              - { entity: 'Revisiones', label: 'Listado de Reisiones', icon: 'medkit' }
 

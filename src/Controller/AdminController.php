@@ -20,17 +20,17 @@ class AdminController extends EasyAdminController
 
     public function imprimirFichaAction()
     {
-        // controllers extending the base AdminController get access to the
-        // following variables:
-        //   $this->request, stores the current request
-        //   $this->em, stores the Entity Manager for this Doctrine entity
-
-        // change the properties of the given entity and save the changes
+        //Recorro con el id del action
         $id = $this->request->query->get('id');
+        //recojo los datos de esa entidad
         $entity = $this->em->getRepository('App:FichaSat')->find($id);
-        $entityClientes = $this->em->getRepository('App:Clientes')->find(9);
+        //recorro su Join de Clientes
+        $entityClientes = $this->em->getRepository('App:Clientes')->find($entity->getNameClientes('id'));
+        
+        //Lanzamos el View
+        return $this->render('imprimirficha.html.twig',
+            array('fichas' => $entity, 'clientes' => $entityClientes)
+        );
 
-        dump($entity);
-        dump($entityClientes);
     }
 }

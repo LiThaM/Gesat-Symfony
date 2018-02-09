@@ -13,35 +13,61 @@ easy_admin:
             class: App\Entity\FichaSat
             disabled_actions: ['show']            
             #help: 'Global message displayed in all views'
-            form:
+            add:
                 fields:
-                    - { type: 'group', css_class: 'col-sm-8', label: 'Información Cliente', icon: 'pencil' }
-                    - { property: 'nameClientes', label: 'Selecciona cliente', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\Clientes' }}
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Información Cliente', icon: 'user' }
+                    - { property: 'nameClientes', label: 'Selecciona cliente:', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\Clientes' }}
                     - { type: 'divider' }
-                    - { property: 'descripcionAveria', label: 'Información del cliente'}
-                    - { property: 'accesorios', label: 'Accesorios'}
-                    - { type: 'group', css_class: 'col-sm-4', label: 'Información Terminal', icon: 'pencil' }
-                    - { property: 'modeloEquipo', label: 'Marca & Modelo',
+                    - { property: 'descripcionAveria', label: 'Descripción Avería:'}
+                    - { property: 'accesorios', label: 'Accesorios incluídos:'}
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Información Terminal:', icon: 'mobile' }
+                    - { property: 'modeloEquipo', label: 'Marca & Modelo:',
                         help: 'Ejemplo: Samsung J5 2016 (F500N)'}
-                    - { property: 'imei', label: 'Numero IMEI',
+                    - { property: 'imei', label: 'Numero IMEI:',
                         help: 'Ejemplo: 010101010100101S'}
-                    - { property: 'numeroSerie', label: 'Numero de Serie'}
-                    - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Adjuntos', icon: 'paperclip' }
-                    - { property: 'imagenFicha', label: 'Imágen Terminal', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'numeroSerie', label: 'Numero de Serie:',
+                        help: 'Ejemplo: DPKJG123456789ABCD'}
+                    - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
+                    - { property: 'imagenFicha', label: 'Imágen Terminal:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
                     - { type: 'divider' }
-                    - { property: 'imagenFicha2', label: 'Imágen Boca Abajo', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha2', label: 'Imágen Boca Abajo:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
                     - { type: 'divider' }
-                    - { property: 'imagenFicha3', label: 'Imágen Golpes o Rotura', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha3', label: 'Imágen Golpes o Rotura:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+            edit:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Información Cliente', icon: 'user' }
+                    - { property: 'nameClientes', label: 'Selecciona cliente:', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\Clientes' }}
+                    - { type: 'divider' }
+                    - { property: 'revisadoTecnico', label: 'Revisado por un técnico'}
+                    - { property: 'entregadoCliente', label: 'Entregado al Cliente'}
+                    - { type: 'divider' }
+                    - { property: 'descripcionAveria', label: 'Descripción Avería:'}
+                    - { property: 'accesorios', label: 'Accesorios incluídos:'}
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Información Terminal:', icon: 'mobile' }
+                    - { property: 'modeloEquipo', label: 'Marca & Modelo:',
+                        help: 'Ejemplo: Samsung J5 2016 (F500N)'}
+                    - { property: 'imei', label: 'Numero IMEI:',
+                        help: 'Ejemplo: 010101010100101S'}
+                    - { property: 'numeroSerie', label: 'Numero de Serie:',
+                        help: 'Ejemplo: DPKJG123456789ABCD'}
+                    - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
+                    - { property: 'imagenFicha', label: 'Imágen Terminal:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { type: 'divider' }
+                    - { property: 'imagenFicha2', label: 'Imágen Boca Abajo:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { type: 'divider' }
+                    - { property: 'imagenFicha3', label: 'Imágen Golpes o Rotura:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
             list:
                 actions:
-                    - { name: 'imprimirFicha', icon: 'print' }
+                    - { name: 'imprimirFicha', icon: 'print', label: '', target: '_blank' }
                 fields:
                     - id
                     - { property: 'nameClientes', label: 'Cliente'}
                     - { property: 'modeloEquipo', label: 'Marca & Modelo'}
+                    - { property: 'revisadoTecnico', label: 'Revisado'}
+                    - { property: 'entregadoCliente', label: 'Entregado Cliente', type: 'toggle'}
                     - { property: 'imei', label: 'Numero IMEI'}
                     - { property: 'numeroSerie', label: 'Numero de Serie'}
                     - { property: 'imagen', type: 'image', label: 'Imagen Estado', base_path: '%app.path.ficha_imagenes%' }
-                    - { property: 'imagen2', type: 'image', label: 'Imagen Atrás', base_path: '%app.path.ficha_imagenes%' }
-                    - { property: 'imagen3', type: 'image', label: 'Imagen Golpe ', base_path: '%app.path.ficha_imagenes%' }                    
+                    # - { property: 'imagen2', type: 'image', label: 'Imagen Atrás', base_path: '%app.path.ficha_imagenes%' }
+                    # - { property: 'imagen3', type: 'image', label: 'Imagen Golpe ', base_path: '%app.path.ficha_imagenes%' }                    
                     - { property: 'fechaEntrada', format: 'd/m/Y H:i:s' }  
