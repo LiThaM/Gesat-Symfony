@@ -13,7 +13,7 @@ easy_admin:
             class: App\Entity\FichaSat
             disabled_actions: ['show']            
             #help: 'Global message displayed in all views'
-            add:
+            new:
                 fields:
                     - { type: 'group', css_class: 'col-sm-8', label: 'Información Cliente', icon: 'user' }
                     - { property: 'nameClientes', label: 'Selecciona cliente:', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\Clientes' }}

@@ -4,21 +4,96 @@
         <meta charset="UTF-8">
         {% block stylesheets %}
             <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-            <style type="text/css">
-                    @page {
-
-                            }
-                    body{
-                            font-family: 'Roboto Condensed', sans-serif;
-                            size: 21cm 29.7cm;
-                            margin: 30mm 45mm 30mm 45mm;
-
-                    }
-            </style>
+            <link href="{{ asset('bundles/easyadmin/stylesheet/imprimira4.css') }}" rel="stylesheet">
         {% endblock %}
     </head>
     <body>
         {% block body %}
+        <header class="clearfix">
+      <div id="logo">
+        <img src="logo.png">
+      </div>
+      <div id="company">
+        <h2 class="name">Company Name</h2>
+        <div>455 Foggy Heights, AZ 85004, US</div>
+        <div>(602) 519-0450</div>
+        <div><a href="mailto:company@example.com">company@example.com</a></div>
+      </div>
+      </div>
+    </header>
+    <main>
+      <div id="details" class="clearfix">
+        <div id="client">
+          <div class="to">Cliente:</div>
+          <h2 class="name">{{ clientes.getNombre() }} {{ clientes.getApellidos() }}</h2>
+          <div class="address">{{ clientes.getDireccion() }}</div>
+          <div class="email"><a href="mailto:{{ clientes.getEmail() }}">{{ clientes.getEmail() }}</a></div>
+        </div>
+        <div id="invoice">
+          <h1>INVOICE 3-2-1</h1>
+          <div class="date">Fecha Entrada: {{ fichas.getFechaEntrada|date('d/m/Y h:m:s') }} </div>
+        </div>
+      </div>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th class="no">#</th>
+            <th class="desc">DESCRIPTION</th>
+            <th class="unit">UNIT PRICE</th>
+            <th class="qty">QUANTITY</th>
+            <th class="total">TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="no">01</td>
+            <td class="desc"><h3>Website Design</h3>Creating a recognizable design solution based on the company's existing visual identity</td>
+            <td class="unit">$40.00</td>
+            <td class="qty">30</td>
+            <td class="total">$1,200.00</td>
+          </tr>
+          <tr>
+            <td class="no">02</td>
+            <td class="desc"><h3>Website Development</h3>Developing a Content Management System-based Website</td>
+            <td class="unit">$40.00</td>
+            <td class="qty">80</td>
+            <td class="total">$3,200.00</td>
+          </tr>
+          <tr>
+            <td class="no">03</td>
+            <td class="desc"><h3>Search Engines Optimization</h3>Optimize the site for search engines (SEO)</td>
+            <td class="unit">$40.00</td>
+            <td class="qty">20</td>
+            <td class="total">$800.00</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">SUBTOTAL</td>
+            <td>$5,200.00</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">TAX 25%</td>
+            <td>$1,300.00</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">GRAND TOTAL</td>
+            <td>$6,500.00</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div id="thanks">Thank you!</div>
+      <div id="notices">
+        <div>NOTICE:</div>
+        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+      </div>
+    </main>
+    <footer>
+      Invoice was created on a computer and is valid without the signature and seal.
+    </footer>
                 <h4>Nombre : {{ clientes.getNombre() }} </h4>
                 <h4>Apellidos : {{ clientes.getApellidos() }} </h4>
                 <h4>Teléfono Móvil: {{ clientes.getMovil() }} </h4>
@@ -28,13 +103,18 @@
                 <hr>
                 <h4>Modelo Equipo: {{ fichas.getModeloEquipo() }} </h4>
                 <h4>NUmero de IMEI: {{ fichas.getImei() }} </h4>
-                <h4>Numero de Serie: {{ fichas.getNumeroSerie() }} </h4>
+                {% if fichas.getNumeroSerie() %}<h4>Numero de Serie: {{ fichas.getNumeroSerie() }} </h4> {% endif %}
                 <h4>descripcionAveria: {{ fichas.getDescripcionAveria() }} </h4>
-                <h4>Accesorios: {{ fichas.getAccesorios() }} </h4>
+                {% if fichas.getAccesorios() %}<h4>Accesorios: {{ fichas.getAccesorios() }} </h4> {% endif %}
                 <h4>Fecha Entrada: {{ fichas.getFechaEntrada|date('d/m/Y h:m:s') }} </h4>
 
 
             {% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        <script type="text/javascript">
+        {# Window.print();
+        Window.close(); #}
+        </script>
+        {% endblock %}
     </body>
 </html>

@@ -28,13 +28,20 @@ class Clientes
      */
     private $apellidos;
     
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $direccion;
+    
+
     /**
      * @ORM\Column(type="string", length=10)
      */
     private $dni;
  
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=10, nullable=true)
      */
     private $telefonoFijo;
 
@@ -214,5 +221,25 @@ class Clientes
     {
         #añade la hora 
         $this->fechaRegistro = new \DateTime();
+    }
+
+    /**
+     * Get the value of direccion
+     */ 
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    /**
+     * Set the value of direccion
+     *
+     * @return  self
+     */ 
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+
+        return $this;
     }
 }

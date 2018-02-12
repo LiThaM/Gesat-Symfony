@@ -22,6 +22,9 @@ easy_admin:
                     - { property: 'movil', label: 'Teléfono Móvil'}
                     - { property: 'telefonoFijo', label: 'Teléfono Fijo'}
                     - { property: 'email', type: 'email', label: 'Correo Electrónico'}
+                    - { type: 'group', css_class: 'col-sm', label: 'Dirección', icon: 'map' }
+                    - { property: 'direccion', label: ''}
+
             list:
                 sort: ['fechaRegistro', 'DESC']
                 fields:
