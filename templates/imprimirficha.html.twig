@@ -1,118 +1,120 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        {% block stylesheets %}
-            <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-            <link href="{{ asset('bundles/easyadmin/stylesheet/imprimira4.css') }}" rel="stylesheet">
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}
-        <br>
+
+<head>
+    <meta charset="UTF-8"> {% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link href="{{ asset('bundles/easyadmin/stylesheet/imprimira4.css') }}" rel="stylesheet"> {% endblock %}
+</head>
+
+<body>
+    {% block body %}
+    <br>
     <main>
-      <div id="details" class="clearfix">
-        <div id="client">
-          <div class="to">Cliente:</div>
-          <h2 class="name">{{ clientes.getNombre() }} {{ clientes.getApellidos() }}</h2>
-          <div class="address">{{ clientes.getDireccion() }}</div>
-          <div class="email"><a href="mailto:{{ clientes.getEmail() }}">{{ clientes.getEmail() }}</a></div>
+        <div id="details" class="clearfix">
+            <div id="client">
+                <div class="to">Datos Cliente:</div>
+                <h2 class="name">{{ clientes.getNombre() }} {{ clientes.getApellidos() }}</h2>
+                <div class="address">{{ clientes.getDireccion() }}</div>
+                <div class="email">
+                    <a href="mailto:{{ clientes.getEmail() }}">{{ clientes.getEmail() }}</a>
+                </div>
+            </div>
+            <div id="invoice">
+                <h2 class="telefonos">{% if clientes.getMovil() %}Móvil: {{ clientes.getMovil() }}{% endif %}</h2>
+                <h2 class="telefonos">{% if clientes.getTelefonoFijo() %}Fijo: {{ clientes.getTelefonoFijo() }}{% endif %}</h2>
+                <div class="date">Fecha Entrada: {{ fichas.getFechaEntrada|date('d/m/Y h:m:s') }} </div>
+            </div>
         </div>
-        <div id="invoice">
-          <h2 class="name">{% if clientes.getMovil() %}Móvil: {{ clientes.getMovil() }}{% endif %}</h2>
-          <h2 class="name">{% if clientes.getTelefonoFijo() %}Fijo: {{ clientes.getTelefonoFijo() }}{% endif %}</h2>
-          <div class="date">Fecha Entrada: {{ fichas.getFechaEntrada|date('d/m/Y h:m:s') }} </div>
-        </div>
-      </div>
-      <table border="0" cellspacing="0" cellpadding="0">
-        <thead>
-          <tr>
-            <th class="no">#</th>
-            <th class="no">MODÉLO EQUIPO</th>
-            <th class="no">NÚMERO DE IMEI</th>
-            {% if fichas.getNumeroSerie() %}<th class="no">NÚMERO DE SERIE</th> {% endif %}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="no">01</td>
-            <td class="desc"><h3>{{ fichas.getModeloEquipo() }} </h3></td>
-            <td class="unit">{{ fichas.getImei() }} </td>
-             {% if fichas.getNumeroSerie() %}<td class="qty"> {{ fichas.getNumeroSerie() }}  </td>{% endif %}
-          </tr>
-          <tr>
-            <td class="no"></td>
-            <td class="desc" colspan="3"><h3>Descripción:</h3>{{ fichas.getDescripcionAveria() }} </td>
+        <table border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th class="no">MODÉLO EQUIPO</th>
+                    <th class="no">NÚMERO DE IMEI</th>
+                    <th class="no">NÚMERO DE SERIE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="desc">
+                        <h3>{{ fichas.getModeloEquipo() }} </h3>
+                    </td>
+                    <td class="imei">{{ fichas.getImei() }} </td>
+                    {% if fichas.getNumeroSerie() %}
+                    <td class="serie"> {{ fichas.getNumeroSerie() }} </td>
+                    {% else %}
+                    <td class="serie">NULL</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td class="desc" colspan="3">
+                        <h3>Descripción Aveía:</h3>{{ fichas.getDescripcionAveria() }} </td>
 
-          </tr>
-          {% if fichas.getAccesorios() %}
-          <tr>
-            <td class="no"></td>
-            <td class="desc" colspan="3"><h3>Accesorios:</h3>{{ fichas.getAccesorios() }} </td>
+                </tr>
+                {% if fichas.getAccesorios() %}
+                <tr>
+                    <td class="desc" colspan="3">
+                        <h3>Accesorios:</h3>{{ fichas.getAccesorios() }} </td>
 
-          </tr>
-          {% endif %}
-          <tr>
-            <td class="no"></td>
-            <td class="desc"><h3>Imágen Terminal:</h3><img class="resize" src="/images/fichacte/{{ fichas.getImagen() }}") ></td>
-            <td class="desc"><h3>Imágen Parte de Abajo:</h3>{% if fichas.getImagen2() %}<img class="resize" src="/images/fichacte/{{ fichas.getImagen2() }}") >{% endif %}</td>
-            <td class="desc"><h3>Imágen Golpe o Rotura:</h3>{% if fichas.getImagen3() %}<img class="resize" src="/images/fichacte/{{ fichas.getImagen3() }}") >{% endif %}</td>
-          </tr>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td class="desc" colspan="3">
+                    <table>
+                    <tr><td>
+                        <h3>Imágen Terminal:</h3>
+                        <img class="resize" src="/images/fichacte/{{ fichas.getImagen() }}" )></td><td>
+                        <h3>Imágen Parte de Abajo:</h3>{% if fichas.getImagen2() %}
+                        <img class="resize" src="/images/fichacte/{{ fichas.getImagen2() }}"
+                            )>{% endif %}</td><td>
+                        <h3>Imágen Golpe o Rotura:</h3>{% if fichas.getImagen3() %}
+                        <img class="resize" src="/images/fichacte/{{ fichas.getImagen3() }}"
+                            )>{% endif %}</td></tr></table></td>
+                </tr>
 
-         {# <tr>
-            <td class="no">03</td>
-            <td class="desc"><h3>Search Engines Optimization</h3>Optimize the site for search engines (SEO)</td>
-            <td class="unit">$40.00</td>
-            <td class="qty">20</td>          </tr> #}
-        </tbody>
-        {# <tfoot>
-          <tr>
-            <td colspan="2"></td>
-            <td colspan="2">SUBTOTAL</td>
-            <td>$5,200.00</td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td colspan="2">TAX 25%</td>
-            <td>$1,300.00</td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td colspan="2">GRAND TOTAL</td>
-            <td>$6,500.00</td>
-          </tr>
+                <tr>
+                    <td class="desc">
+                        <div class="firmas">&nbsp;&nbsp;&nbsp;Conformidad Cliente:</div>
+                    </td>
+                    <td class="desc" colspan="2">
+                        <div class="firmas">&nbsp;&nbsp;&nbsp;Sello Emprésa:</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {#
+        <tfoot>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2">SUBTOTAL</td>
+                <td>$5,200.00</td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2">TAX 25%</td>
+                <td>$1,300.00</td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2">GRAND TOTAL</td>
+                <td>$6,500.00</td>
+            </tr>
         </tfoot> #}
-      </table>
-      <div id="thanks">Thank you!</div>
-      <div id="notices">
-        <div>NOTICE:</div>
-        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
-      </div>
+        <div id="notices">
+            <div>NOTICE:</div>
+            <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+        </div>
     </main>
     <footer>
-      Invoice was created on a computer and is valid without the signature and seal.
+        Invoice was created on a computer and is valid without the signature and seal.
     </footer>
-                {# <h4>Nombre : {{ clientes.getNombre() }} </h4>
-                <h4>Apellidos : {{ clientes.getApellidos() }} </h4>
-                <h4>Teléfono Móvil: {{ clientes.getMovil() }} </h4>
-                <h4>Teléfono Fijo: {{ clientes.getTelefonoFijo() }} </h4>
-                <h4>DNI: {{ clientes.getDni() }} </h4>
-                <h4>Email: {{ clientes.getEmail() }} </h4>
-                <hr>
-                <h4>Modelo Equipo: {{ fichas.getModeloEquipo() }} </h4>
-                <h4>NUmero de IMEI: {{ fichas.getImei() }} </h4>
-                {% if fichas.getNumeroSerie() %}<h4>Numero de Serie: {{ fichas.getNumeroSerie() }} </h4> {% endif %}
-                <h4>descripcionAveria: {{ fichas.getDescripcionAveria() }} </h4>
-                {% if fichas.getAccesorios() %}<h4>Accesorios: {{ fichas.getAccesorios() }} </h4> {% endif %}
-                <h4>Fecha Entrada: {{ fichas.getFechaEntrada|date('d/m/Y h:m:s') }} </h4>
- #}
+    {% endblock %} {% block javascripts %}
+    <script type="text/javascript">
+        {#
+            window.print();
+            window.close();#}
+    </script>
+    {% endblock %}
+</body>
 
-            {% endblock %}
-        {% block javascripts %}
-        <script type="text/javascript">
-        {# window.print();
-        window.close(); #}
-        </script>
-        {% endblock %}
-    </body>
 </html>

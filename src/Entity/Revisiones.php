@@ -19,7 +19,7 @@ class Revisiones{
 
      /**
      * @ORM\ManyToOne(targetEntity="App\Entity\FichaSat")
-     * @ORM\JoinColumn(name="clientes", referencedColumnName="id")
+     * @ORM\JoinColumn(name="fichasast_id", referencedColumnName="id")
      */
     private $idFichaSat;
 
