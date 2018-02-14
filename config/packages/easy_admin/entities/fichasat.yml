@@ -1,4 +1,4 @@
-# This file sets the configuration of the 'Category' entity.
+    # This file sets the configuration of the 'Category' entity.
 #
 # NOTE: this demo application splits the backend configuration into several
 # small files for educational purposes. In your application you can put the
@@ -19,6 +19,7 @@ easy_admin:
                     - { property: 'nameClientes', label: 'Selecciona cliente:', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\Clientes' }}
                     - { type: 'divider' }
                     - { property: 'descripcionAveria', label: 'Descripción Avería:'}
+                    - { type: 'divider' }
                     - { property: 'accesorios', label: 'Accesorios incluídos:'}
                     - { type: 'group', css_class: 'col-sm-4', label: 'Información Terminal:', icon: 'mobile' }
                     - { property: 'modeloEquipo', label: 'Marca & Modelo:',
@@ -27,6 +28,8 @@ easy_admin:
                         help: 'Ejemplo: 010101010100101S'}
                     - { property: 'numeroSerie', label: 'Numero de Serie:',
                         help: 'Ejemplo: DPKJG123456789ABCD'}
+                    - { property: 'codigoDesbloqueo', label: 'Codigo Desbloqueo:' }
+                    - { property: 'codigoPin', label: 'Codigo Pin:' }
                     - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
                     - { property: 'imagenFicha', label: 'Imágen Terminal:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
                     - { type: 'divider' }
@@ -39,6 +42,7 @@ easy_admin:
                     - { property: 'nameClientes', label: 'Selecciona cliente:', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\Clientes' }}
                     - { type: 'divider' }
                     - { property: 'revisadoTecnico', label: 'Revisado por un técnico'}
+                    - { type: 'divider' }
                     - { property: 'entregadoCliente', label: 'Entregado al Cliente'}
                     - { type: 'divider' }
                     - { property: 'descripcionAveria', label: 'Descripción Avería:'}
@@ -50,6 +54,8 @@ easy_admin:
                         help: 'Ejemplo: 010101010100101S'}
                     - { property: 'numeroSerie', label: 'Numero de Serie:',
                         help: 'Ejemplo: DPKJG123456789ABCD'}
+                    - { property: 'codigoDesbloqueo', label: 'Codigo Desbloqueo:' }
+                    - { property: 'codigoPin', label: 'Codigo Pin:' }
                     - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
                     - { property: 'imagenFicha', label: 'Imágen Terminal:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
                     - { type: 'divider' }
