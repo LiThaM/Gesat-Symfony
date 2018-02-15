@@ -17,22 +17,30 @@ easy_admin:
             - { name: 'delete', icon: 'trash', label: '', title: 'Delete' }
     design:
         menu:
-          #Entidad Clientes
-          - entity: 'Clientes'
+            #Entidad Clientes
+          - label: 'Clientes'
             icon: 'user-circle'
             children:
               - { entity: 'Clientes', label: 'Nuevo Cliente', icon: 'user-plus', params: { action: 'new' } }
               - { entity: 'Clientes', label: 'Listado de Clientes', icon: 'users'}
-          #Entidad FichaSAT    
-          - entity: 'FichaSat'
+          #Entidad FichaSAT 
+          - label: 'SAT'   
             icon: 'bug'
             children:
               - { entity: 'FichaSat', label: 'Nueva Ficha', icon: 'cog', params: { action: 'new' } }
               - { entity: 'FichaSat', label: 'Listado de Fichas', icon: 'cogs'}
           #Entidad Revisiones
-          - entity: 'Revisiones'
+          - label: 'Revisiones SAT'
             icon: 'heartbeat'
             children:
               - { entity: 'Revisiones', label: 'Nueva Revisión', icon: 'microchip', params: { action: 'new' } }
               - { entity: 'Revisiones', label: 'Listado de Reisiones', icon: 'medkit' }
+              # - { entity: 'EstadoAveria', label: 'Listado de Reisiones', icon: 'cog' }
+          # Configuración
+          - label: 'Configuración'
+            icon: 'cog'
+            children:
+              - { entity: 'EstadoAveria', label: 'Nuevo Estado', icon: 'cogs', params: { action: 'new' } }     
+              - { entity: 'EstadoAveria', label: 'Listado de Estados', icon: 'cogs' }
+     
 

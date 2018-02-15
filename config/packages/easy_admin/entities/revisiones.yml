@@ -10,3 +10,15 @@ easy_admin:
     entities:
         Revisiones:
             class: App\Entity\Revisiones
+            disabled_actions: ['show']            
+            #help: 'Global message displayed in all views'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Información Cliente', icon: 'user' }
+                    - { property: 'descripcionAveria', label: 'Descripción Avería ( Parte Técnico ):' }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Información Cliente', icon: 'user' }
+                    - { property: 'estadoAveria', label: 'Estado averia',
+                        help: 'Pendiente de presupuesto' }
+                    - { property: 'idFichaSat', label: 'Ficha Técnica:', type: 'easyadmin_autocomplete' }
+                    
+

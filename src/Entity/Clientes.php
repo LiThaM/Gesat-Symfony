@@ -138,7 +138,7 @@ class Clientes
 
     /**
      * Get the value of movil
-     */ 
+     */
     public function getMovil()
     {
         return $this->movil;
@@ -148,7 +148,7 @@ class Clientes
      * Set the value of movil
      *
      * @return  self
-     */ 
+     */
     public function setMovil($movil)
     {
         $this->movil = $movil;
@@ -158,7 +158,7 @@ class Clientes
 
     /**
      * Get the value of nombre
-     */ 
+     */
     public function getNombre()
     {
         return $this->nombre;
@@ -168,7 +168,7 @@ class Clientes
      * Set the value of nombre
      *
      * @return  self
-     */ 
+     */
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
@@ -178,7 +178,7 @@ class Clientes
 
     /**
      * Get the value of telefonoFijo
-     */ 
+     */
     public function getTelefonoFijo()
     {
         return $this->telefonoFijo;
@@ -188,7 +188,7 @@ class Clientes
      * Set the value of telefonoFijo
      *
      * @return  self
-     */ 
+     */
     public function setTelefonoFijo($telefonoFijo)
     {
         $this->telefonoFijo = $telefonoFijo;
@@ -198,7 +198,7 @@ class Clientes
 
     /**
      * Get the value of apellidos
-     */ 
+     */
     public function getApellidos()
     {
         return $this->apellidos;
@@ -208,7 +208,7 @@ class Clientes
      * Set the value of apellidos
      *
      * @return  self
-     */ 
+     */
     public function setApellidos($apellidos)
     {
         $this->apellidos = $apellidos;
@@ -217,15 +217,15 @@ class Clientes
     }
 
     #CONSTRUCTOR
-    function __construct() 
+    public function __construct()
     {
-        #añade la hora 
+        #añade la hora
         $this->fechaRegistro = new \DateTime();
     }
 
     /**
      * Get the value of direccion
-     */ 
+     */
     public function getDireccion()
     {
         return $this->direccion;
@@ -235,7 +235,7 @@ class Clientes
      * Set the value of direccion
      *
      * @return  self
-     */ 
+     */
     public function setDireccion($direccion)
     {
         $this->direccion = $direccion;

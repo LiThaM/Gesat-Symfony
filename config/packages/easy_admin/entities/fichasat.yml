@@ -21,13 +21,14 @@ easy_admin:
                     - { property: 'descripcionAveria', label: 'Descripción Avería:'}
                     - { type: 'divider' }
                     - { property: 'accesorios', label: 'Accesorios incluídos:'}
-                    - { type: 'group', css_class: 'col-sm-4', label: 'Información Terminal:', icon: 'mobile' }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Información Terminal', icon: 'mobile' }
                     - { property: 'modeloEquipo', label: 'Marca & Modelo:',
                         help: 'Ejemplo: Samsung J5 2016 (F500N)'}
                     - { property: 'imei', label: 'Numero IMEI:',
                         help: 'Ejemplo: 010101010100101S'}
                     - { property: 'numeroSerie', label: 'Numero de Serie:',
                         help: 'Ejemplo: DPKJG123456789ABCD'}
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Seguridad', icon: 'key' }
                     - { property: 'codigoDesbloqueo', label: 'Codigo Desbloqueo:' }
                     - { property: 'codigoPin', label: 'Codigo Pin:' }
                     - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
@@ -54,6 +55,7 @@ easy_admin:
                         help: 'Ejemplo: 010101010100101S'}
                     - { property: 'numeroSerie', label: 'Numero de Serie:',
                         help: 'Ejemplo: DPKJG123456789ABCD'}
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Seguridad', icon: 'key' }                        
                     - { property: 'codigoDesbloqueo', label: 'Codigo Desbloqueo:' }
                     - { property: 'codigoPin', label: 'Codigo Pin:' }
                     - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
