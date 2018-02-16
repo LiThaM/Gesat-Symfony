@@ -3,13 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="estados_revisiones")
+ * @ORM\Table(name="revisiones")
  */
-class Revisiones
-{
+class Revisiones{
 
      /**
      * @ORM\Id
@@ -18,25 +20,25 @@ class Revisiones
      */
     private $id;
 
-    /**
-    * @ORM\ManyToOne(targetEntity="App\Entity\FichaSat")
-    * @ORM\JoinColumn(name="id_ficha_sat", referencedColumnName="id")
-    */
+     /**
+     * @ORM\ManyToOne(targetEntity="FichaSat", inversedBy="revisiones", cascade={"remove"})
+     * @ORM\JoinColumn(referencedColumnName="id")
+     */
     private $idFichaSat;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\EstadoAveria")
+     * @ORM\ManyToOne(targetEntity="EstadoAveria", inversedBy="id")
      * @ORM\JoinColumn(name="estado_averia", referencedColumnName="id")
      */
-    private $estadoAveria;
+    private $estadoAveria; 
 
     /**
      * @ORM\Column(type="text")
      */
-    private $descripcionAveria;
+    private $descripcionAveria; 
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     private $setUpdateAt;
 
@@ -44,7 +46,7 @@ class Revisiones
 
     /**
      * Get the value of id
-     */
+     */ 
     public function getId()
     {
         return $this->id;
@@ -54,7 +56,7 @@ class Revisiones
      * Set the value of id
      *
      * @return  self
-     */
+     */ 
     public function setId($id)
     {
         $this->id = $id;
@@ -64,7 +66,7 @@ class Revisiones
 
     /**
      * Get the value of idFichaSat
-     */
+     */ 
     public function getIdFichaSat()
     {
         return $this->idFichaSat;
@@ -74,7 +76,7 @@ class Revisiones
      * Set the value of idFichaSat
      *
      * @return  self
-     */
+     */ 
     public function setIdFichaSat($idFichaSat)
     {
         $this->idFichaSat = $idFichaSat;
@@ -84,7 +86,7 @@ class Revisiones
 
     /**
      * Get the value of estadoAveria
-     */
+     */ 
     public function getEstadoAveria()
     {
         return $this->estadoAveria;
@@ -94,7 +96,7 @@ class Revisiones
      * Set the value of estadoAveria
      *
      * @return  self
-     */
+     */ 
     public function setEstadoAveria($estadoAveria)
     {
         $this->estadoAveria = $estadoAveria;
@@ -104,7 +106,7 @@ class Revisiones
 
     /**
      * Get the value of descripcionAveria
-     */
+     */ 
     public function getDescripcionAveria()
     {
         return $this->descripcionAveria;
@@ -114,7 +116,7 @@ class Revisiones
      * Set the value of descripcionAveria
      *
      * @return  self
-     */
+     */ 
     public function setDescripcionAveria($descripcionAveria)
     {
         $this->descripcionAveria = $descripcionAveria;
@@ -124,7 +126,7 @@ class Revisiones
 
     /**
      * Get the value of setUpdateAt
-     */
+     */ 
     public function getSetUpdateAt()
     {
         return $this->setUpdateAt;
@@ -134,11 +136,24 @@ class Revisiones
      * Set the value of setUpdateAt
      *
      * @return  self
-     */
+     */ 
     public function setSetUpdateAt($setUpdateAt)
     {
-        $this->fechaRegistro = new \DateTime('now');
+        $this->setUpdateAt = new \DateTime();
 
         return $this;
     }
+     #CONSTRUCTOR
+     public function __construct()
+     {
+         #añade la hora
+         $this->setUpdateAt = new \DateTime();
+
+     }
+
+     public function __toString()
+     {
+          
+         return $this->id."# [".$this->estadoAveria."]";
+     }
 }

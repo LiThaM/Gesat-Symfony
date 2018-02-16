@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * @ORM\Entity
@@ -59,6 +61,12 @@ class Clientes
      * @ORM\Column(type="datetime")
     */
     private $fechaRegistro;
+
+    /**
+     * @var fichas[]
+     * @ORM\OneToMany(targetEntity="FichaSat", mappedBy="nameClientes")
+     */
+    private $fichas;
 
     /**
      * Get id
@@ -216,13 +224,6 @@ class Clientes
         return $this;
     }
 
-    #CONSTRUCTOR
-    public function __construct()
-    {
-        #añade la hora
-        $this->fechaRegistro = new \DateTime();
-    }
-
     /**
      * Get the value of direccion
      */
@@ -241,5 +242,36 @@ class Clientes
         $this->direccion = $direccion;
 
         return $this;
+    }
+
+    #CONSTRUCTOR
+    public function __construct()
+    {
+        #añade la hora
+        $this->fechaRegistro = new \DateTime();
+        #Creamos el array
+        $this->fichas = new ArrayCollection();
+    }
+
+    /**
+     * Get the value of fichas
+     *
+     * @return  fichas[]
+     */ 
+    public function getFichas()
+    {
+        return $this->fichas;
+    }
+
+    /**
+     * Set the value of fichas
+     *
+     * @param  fichas[]  $fichas
+     *
+     * @return  self
+     */ 
+    public function setFichas($fichas)
+    {
+        return $this->fichas = $fichas;
     }
 }

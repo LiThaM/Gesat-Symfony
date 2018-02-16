@@ -10,7 +10,7 @@ easy_admin:
     entities:
         Revisiones:
             class: App\Entity\Revisiones
-            disabled_actions: ['show']            
+            # disabled_actions: ['show']            
             #help: 'Global message displayed in all views'
             form:
                 fields:
