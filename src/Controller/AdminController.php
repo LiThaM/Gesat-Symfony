@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as EasyAdminController;
-
 
 class AdminController extends EasyAdminController
 {
@@ -18,6 +16,24 @@ class AdminController extends EasyAdminController
     /** @var EntityManager The Doctrine entity manager for the current entity */
     protected $em;
 
+    public function persistEntity($entity)
+    {
+        if (method_exists($entity, 'getIdFichaSat')) {
+            $this->cambioRevisado($entity);
+        }
+
+        parent::persistEntity($entity);
+    }
+    
+    public function cambioRevisado($entity)
+    {
+        if (method_exists($entity, 'getIdFichaSat')) {
+            if($entity->getIdFichaSat()->getRevisadoTecnico() == false) {
+                $entity->getIdFichaSat()->setRevisadoTecnico(true);   
+            } 
+        }
+    }
+
     public function imprimirFichaAction()
     {
         //Recorro con el id del action
@@ -28,9 +44,9 @@ class AdminController extends EasyAdminController
         $entityClientes = $this->em->getRepository('App:Clientes')->find($entity->getNameClientes('id'));
         
         //Lanzamos el View
-        return $this->render('imprimirficha.html.twig',
+        return $this->render(
+            'imprimirficha.html.twig',
             array('fichas' => $entity, 'clientes' => $entityClientes)
         );
-
     }
 }

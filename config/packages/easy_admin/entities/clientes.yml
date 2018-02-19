@@ -28,7 +28,7 @@ easy_admin:
                 sort: ['fechaRegistro', 'DESC']
                 fields:
                     - { property: 'id', type: 'int'}
-                    - { property: 'fichas' , label: 'Total Fichas'}    
+                    - { property: 'fichas' , label: 'Total SAT'}    
                     - { property: 'nombre', type: 'string'}
                     - { property: 'apellidos', type: 'string'}
                     - { property: 'dni', type: 'string', label: 'DNI'}

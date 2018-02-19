@@ -27,14 +27,14 @@ easy_admin:
           - label: 'SAT'   
             icon: 'bug'
             children:
-              - { entity: 'FichaSat', label: 'Nueva Ficha', icon: 'cog', params: { action: 'new' } }
-              - { entity: 'FichaSat', label: 'Listado de Fichas', icon: 'cogs'}
+              - { entity: 'FichaSat', label: 'Nueva Ficha', icon: 'code', params: { action: 'new' } }
+              - { entity: 'FichaSat', label: 'Listado de Fichas', icon: 'codepen'}
           #Entidad Revisiones
           - label: 'Revisiones SAT'
-            icon: 'heartbeat'
+            icon: 'eye'
             children:
-              - { entity: 'Revisiones', label: 'Nueva Revisión', icon: 'microchip', params: { action: 'new' } }
-              - { entity: 'Revisiones', label: 'Listado de Reisiones', icon: 'medkit' }
+              - { entity: 'Revisiones', label: 'Nueva Revisión', icon: 'comment', params: { action: 'new' } }
+              - { entity: 'Revisiones', label: 'Listado de Reisiones', icon: 'comments' }
               # - { entity: 'EstadoAveria', label: 'Listado de Reisiones', icon: 'cog' }
           # Configuración
           - label: 'Configuración'
