@@ -27,7 +27,7 @@ class Revisiones{
     private $idFichaSat;
 
     /**
-     * @ORM\ManyToOne(targetEntity="EstadoAveria", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="EstadoAveria")
      * @ORM\JoinColumn(name="estado_averia", referencedColumnName="id")
      */
     private $estadoAveria; 

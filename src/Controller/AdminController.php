@@ -19,19 +19,22 @@ class AdminController extends EasyAdminController
     public function persistEntity($entity)
     {
         if (method_exists($entity, 'getIdFichaSat')) {
-            $this->cambioRevisado($entity);
+            $this->revisionTerminal($entity);
         }
 
         parent::persistEntity($entity);
     }
     
-    public function cambioRevisado($entity)
+    public function revisionTerminal($entity)
     {
-        if (method_exists($entity, 'getIdFichaSat')) {
-            if($entity->getIdFichaSat()->getRevisadoTecnico() == false) {
-                $entity->getIdFichaSat()->setRevisadoTecnico(true);   
-            } 
+        //Asiganamos la fecha de reparado
+        $entity->getIdFichaSat()->setFechaReparado(new \DateTime());
+        //activamos revisado tecnico a true
+        if ($entity->getIdFichaSat()->getRevisadoTecnico() == false) {
+            $entity->getIdFichaSat()->setRevisadoTecnico(true);
         }
+        //envio correo
+        $this->envioEmailRevision($entity);
     }
 
     public function imprimirFichaAction()
@@ -48,5 +51,33 @@ class AdminController extends EasyAdminController
             'imprimirficha.html.twig',
             array('fichas' => $entity, 'clientes' => $entityClientes)
         );
+    }
+    public function envioEmailRevision($entity, \Swift_Mailer $mailer)
+    {
+        $message = (new \Swift_Message('Hello Email!'))
+            ->setFrom('bitspontevedra@gmail.com')
+            ->setTo($entity->getIdFichaSat()->getNameClientes()->getEmail())
+            ->setBody(
+                $this->renderView(
+                    // templates/emails/registration.html.twig
+                    'correorevision.html.twig',
+                    array('revision' => $entity)
+                ),
+                'text/html'
+            )
+            /*
+             * If you also want to include a plaintext version of the message
+            ->addPart(
+                $this->renderView(
+                    'emails/registration.txt.twig',
+                    array('name' => $name)
+                ),
+                'text/plain'
+            )
+            */
+        ;
+        $mailer->send($message);
+    
+       //return $this->render(...);
     }
 }
