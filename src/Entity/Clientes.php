@@ -141,7 +141,7 @@ class Clientes
     
     public function __toString()
     {
-        return $this->id."# ".$this->nombre." ".$this->apellidos;
+        return "[".$this->id."#] ".$this->nombre." ".$this->apellidos;
     }
 
     /**

@@ -10,6 +10,7 @@ easy_admin:
     entities:
         Revisiones:
             class: App\Entity\Revisiones
+            controller: App\Controller\Admin\RevisionesController
             # disabled_actions: ['show']            
             #help: 'Global message displayed in all views'
             form:
