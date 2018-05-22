@@ -155,3 +155,7 @@ img.resize{
   max-width: 300px; 
   max-height: 300px;
 }
+div.notice{
+	font-style: italic;
+	font-size: 9px;
+}
