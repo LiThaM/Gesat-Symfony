@@ -4,115 +4,165 @@
 <head>
     <meta charset="UTF-8"> {% block stylesheets %}
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-    <link href="{{ asset('bundles/easyadmin/stylesheet/imprimira4.css') }}" rel="stylesheet"> {% endblock %}
+    <link href="{{ asset('css/imprimira4.css') }}" rel="stylesheet"> {% endblock %}
 </head>
 
 <body>
     {% block body %}
     <br>
     <main>
-        <div id="details" class="clearfix">
-            <div id="client">
-                <div class="to">Datos Cliente:</div>
-                <h2 class="name">{{ clientes.getNombre() }} {{ clientes.getApellidos() }}</h2>
-                <div class="address">{{ clientes.getDireccion() }}</div>
-                <div class="email">
-                    <a href="mailto:{{ clientes.getEmail() }}">{{ clientes.getEmail() }}</a>
-                </div>
-            </div>
-            <div id="invoice">
-                <h2 class="telefonos">{% if clientes.getMovil() %}Móvil: {{ clientes.getMovil() }}{% endif %}</h2>
-                <h2 class="telefonos">{% if clientes.getTelefonoFijo() %}Fijo: {{ clientes.getTelefonoFijo() }}{% endif %}</h2>
-                <div class="date">Fecha Entrada: {{ fichas.getFechaEntrada|date('d/m/Y h:m:s') }} </div>
-            </div>
-        </div>
-        <table border="0" cellspacing="0" cellpadding="0">
+        <table>
             <thead>
                 <tr>
-                    <th class="no">MODÉLO EQUIPO</th>
-                    <th class="no">NÚMERO DE IMEI</th>
-                    <th class="no">NÚMERO DE SERIE</th>
+                    <td rowspan="4">
+                        <img class="logo" src="http://www.bitstore.es/Themes/DefaultZonaPc/Content/images/logo.png"/>
+                    </td>
+                    <th>DATOS EMPRESA</th>
+                     <th>NUMERO FICHA</th>
+                </tr>
+                <tr>
+                    <td>Alejandro Castro Nantes · 77409187L</td>
+                    <td>SAT: {{ fichas.getId }}</td>
+                </tr>
+                <tr>
+                    <td>Avda. Reina Victoria N5 · Pontevedra</td>
+                    <th>REVISIONES</th>
+                </tr>
+                <tr>
+                    <td>986 109 394 - 698 119 542</td>
+                    <td>{{ fichas.getRevisiones.count() }}</td>
+
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td class="desc">
-                        <h3>{{ fichas.getModeloEquipo() }} </h3>
-                    </td>
-                    <td class="imei">{{ fichas.getImei() }} </td>
-                    {% if fichas.getNumeroSerie() %}
-                    <td class="serie"> {{ fichas.getNumeroSerie() }} </td>
-                    {% else %}
-                    <td class="serie">NULL</td>
-                    {% endif %}
-                </tr>
-                <tr>
-                    <td class="desc" colspan="3">
-                        <h3>Descripción Aveía:</h3>{{ fichas.getDescripcionAveria() }} </td>
-
-                </tr>
-                {% if fichas.getAccesorios() %}
-                <tr>
-                    <td class="desc" colspan="3">
-                        <h3>Accesorios:</h3>{{ fichas.getAccesorios() }} </td>
-
-                </tr>
-                {% endif %}
-                <tr>
-                    <td class="desc" colspan="3">
-                    <table>
-                    <tr><td>
-                        <h3>Imágen Terminal:</h3>
-                        <img class="resize" src="/images/fichacte/{{ fichas.getImagen() }}" )></td><td>
-                        <h3>Imágen Parte de Abajo:</h3>{% if fichas.getImagen2() %}
-                        <img class="resize" src="/images/fichacte/{{ fichas.getImagen2() }}"
-                            )>{% endif %}</td><td>
-                        <h3>Imágen Golpe o Rotura:</h3>{% if fichas.getImagen3() %}
-                        <img class="resize" src="/images/fichacte/{{ fichas.getImagen3() }}"
-                            )>{% endif %}</td></tr></table></td>
-                </tr>
-
-                <tr>
-                    <td class="desc">
-                        <div class="firmas">&nbsp;&nbsp;&nbsp;Conformidad Cliente:</div>
-                    </td>
-                    <td class="desc" colspan="2">
-                        <div class="firmas">&nbsp;&nbsp;&nbsp;Sello Emprésa:</div>
-                    </td>
-                </tr>
-            </tbody>
         </table>
-        {#
-        <tfoot>
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="2">SUBTOTAL</td>
-                <td>$5,200.00</td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="2">TAX 25%</td>
-                <td>$1,300.00</td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="2">GRAND TOTAL</td>
-                <td>$6,500.00</td>
-            </tr>
-        </tfoot> #}
-        <div id="notices">
-            <div>NOTICE:</div>
-            <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
-        </div>
+            <table border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th class="no">NOMBRE</th>
+                        <th class="no">DIRECCIÓN</th>
+                        <th class="no">EMAIL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ clientes.getNombre() }} {{ clientes.getApellidos() }}</td>
+                        <td>{{ clientes.getDireccion() }}</td>
+                        <td>{{ clientes.getEmail() }}</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th class="no">TELEFONO MOVIL</th>
+                        <th class="no">TELEFONO FIJO</th>
+                        <th class="no">FECHA DE ENTRADA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{% if clientes.getMovil() %}{{ clientes.getMovil() }}{% endif %}</td>
+                        <td>{% if clientes.getTelefonoFijo() %}{{ clientes.getTelefonoFijo() }}{% endif %}</td>
+                        <td>{{ fichas.getFechaEntrada|date('d/m/Y h:m:s') }} </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th class="no">MODÉLO EQUIPO</th>
+                        <th class="no">NÚMERO DE IMEI</th>
+                        <th class="no">NÚMERO DE SERIE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ fichas.getModeloEquipo() }}</td>
+                        <td >{{ fichas.getImei() }} </td>
+                        {% if fichas.getNumeroSerie() %}
+                        <td class="serie"> {{ fichas.getNumeroSerie() }} </td>
+                        {% else %}
+                        <td class="serie">NULL</td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th class="no" colspan="3">DESCRIPCIÓN AVERÍA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="desc" colspan="3">{{ fichas.getDescripcionAveria() }}</td>
+                    </tr>
+                </tbody>
+            {% if fichas.getAccesorios() %} 
+                <thead>
+                    <tr>
+                        <th class="no" colspan="3">ACCESORIOS ENTREGADOS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="desc" colspan="3">{{ fichas.getAccesorios() }}</td>
+                    </tr>
+
+                </tbody>
+            {% endif %}
+                <thead>
+                    <tr>
+                        <th class="no">IMAGEN DELANTERA</th>
+                        <th class="no">IMAGEN TRASERA</th>
+                        <th class="no">IMAGEN GOLPE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                    <tr>
+                        <td>
+                            <img class="resize" src="/images/fichacte/{{ fichas.getImagen() }}" )>
+                        </td>
+                        <td>
+                            {% if fichas.getImagen2() %}
+                                <img class="resize" src="/images/fichacte/{{ fichas.getImagen2() }}" )>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if fichas.getImagen3() %}
+                                <img class="resize" src="/images/fichacte/{{ fichas.getImagen3() }}" )>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tr>
+                    <th class="firmas" colspan="2">CONFORMIDAD CLIENTE</th>
+                    <th class="firmas" colspan="2">SELLO EMPRESA</th>
+                </tr>
+                <tr>
+                    <td  colspan="2" ><br><br><br><br><br><br><br><br><br><br></th>
+                    <td  colspan="2" ></th>
+                </tr>
+            </table>
+            <div id="notices">
+                <div>IMPORTANTE:</div>
+                <br>
+                <div class="notice">
+                    De acuerdo a la LOPD el cliente debe entregar el terminal sin tarjeta de memoria ni tarjeta SIM. No nos hacemos responsables de la pérdida de las mismas en caso de que el cliente no las retire.
+                    <br><br>
+                    El tiempo máximo de almacenaje y custodia del terminal sin coste para el cliente será de 30 días, a partir de aquí el coste será de 2 euros por día, pasados 2 meses desde la comunicacion al cliente se entendera que el mismo renuncia al mismo y pasará a reciclaje.
+                    <br><br>
+                    Para cualquier reclamacion será imprescindible presentar este resguardo, por tanto, el servicio técnico declina toda responsabilidad derivada de la pérdida del mismo.
+                    <br><br>
+                    No nos hacemos responsables de ningun tipo de información contenida en dicho terminal o equipo informático, excepto a petición por el cliente, en todo caso se realizara una copia de seguridad del dispositivo y se restablecera una vez finalidada la reparación.
+                    <br><br>
+
+                </div>
+            </div>
     </main>
-    <footer>
-        Invoice was created on a computer and is valid without the signature and seal.
-    </footer>
     {% endblock %} {% block javascripts %}
     <script type="text/javascript">
         {#
             window.print();
-            window.close();#}
+            window.close();#
+        #}
     </script>
     {% endblock %}
 </body>

@@ -30,7 +30,7 @@ easy_admin:
                         help: 'Ejemplo: DPKJG123456789ABCD'}
                     - { type: 'group', css_class: 'col-sm-4', label: 'Seguridad', icon: 'key' }
                     - { property: 'codigoDesbloqueo', label: 'Codigo Desbloqueo:' }
-                    - { property: 'codigoPin', label: 'Codigo Pin:' }
+                    - { property: 'codigoPin', label: 'Codigo Pin SIM:' }
                     - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
                     - { property: 'imagenFicha', label: 'Imágen Terminal:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
                     - { type: 'divider' }
@@ -57,7 +57,7 @@ easy_admin:
                         help: 'Ejemplo: DPKJG123456789ABCD'}
                     - { type: 'group', css_class: 'col-sm-4', label: 'Seguridad', icon: 'key' }                        
                     - { property: 'codigoDesbloqueo', label: 'Codigo Desbloqueo:' }
-                    - { property: 'codigoPin', label: 'Codigo Pin:' }
+                    - { property: 'codigoPin', label: 'Codigo Pin SIM:' }
                     - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
                     - { property: 'imagenFicha', label: 'Imágen Terminal:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
                     - { type: 'divider' }
