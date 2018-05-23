@@ -21,8 +21,8 @@ class Revisiones{
     private $id;
 
      /**
-     * @ORM\ManyToOne(targetEntity="FichaSat", inversedBy="revisiones", cascade={"remove"})
-     * @ORM\JoinColumn(referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="FichaSat", inversedBy="revisiones")
+     * @ORM\JoinColumn(referencedColumnName="id", onDelete="SET NULL")
      */
     private $idFichaSat;
 
