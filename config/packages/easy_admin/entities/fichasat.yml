@@ -59,21 +59,24 @@ easy_admin:
                     - { property: 'codigoDesbloqueo', label: 'Codigo Desbloqueo:' }
                     - { property: 'codigoPin', label: 'Codigo Pin SIM:' }
                     - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
-                    - { property: 'imagenFicha', label: 'Imágen Terminal:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha', label: 'Parte Superior:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
                     - { type: 'divider' }
-                    - { property: 'imagenFicha2', label: 'Imágen Boca Abajo:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha2', label: 'Parte Inferior:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
                     - { type: 'divider' }
-                    - { property: 'imagenFicha3', label: 'Imágen Golpes o Rotura:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha3', label: 'Daños:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
             list:
                 actions:
                     - { name: 'imprimirFicha', icon: 'print', label: '', target: '_blank' }
+                    - { name: 'edit', icon: 'edit', label: '' }
+                    - { name: 'show', icon: 'info', label: '' }
+                    - { name: 'delete', icon: 'trash', label: '' }
                 fields:
                     - id
                     - { property: 'revisiones', label: 'Revisiones'}
                     - { property: 'modeloEquipo', label: 'Marca & Modelo'}
                     - { property: 'revisadoTecnico', label: 'Revisado'}
                     - { property: 'revisiones', label: 'Revisado'}
-                    - { property: 'entregadoCliente', label: 'Entregado Cliente', type: 'toggle'}
+                    - { property: 'entregadoCliente', label: 'Entregado', type: 'toggle'}
                     - { property: 'imei', label: 'Numero IMEI'}
                     - { property: 'numeroSerie', label: 'Numero de Serie'}
                     - { property: 'imagen', type: 'image', label: 'Imagen Estado', base_path: '%app.path.ficha_imagenes%' }
