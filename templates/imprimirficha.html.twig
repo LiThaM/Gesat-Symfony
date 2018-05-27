@@ -107,9 +107,9 @@
             {% endif %}
                 <thead>
                     <tr>
-                        <th class="no">IMAGEN DELANTERA</th>
-                        <th class="no">IMAGEN TRASERA</th>
-                        <th class="no">IMAGEN GOLPE</th>
+                        <th class="no">PARTE SUPERIOR</th>
+                        <th class="no">PARTE INFERIOR</th>
+                        <th class="no">DAÑOS</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -121,11 +121,15 @@
                         <td>
                             {% if fichas.getImagen2() %}
                                 <img class="resize" src="/images/fichacte/{{ fichas.getImagen2() }}" )>
+                                {% else %}
+                                <img class="resize"  src="/images/image-not-found.png"/>
                             {% endif %}
                         </td>
                         <td>
                             {% if fichas.getImagen3() %}
                                 <img class="resize" src="/images/fichacte/{{ fichas.getImagen3() }}" )>
+                                {% else %}
+                                <img class="resize" src="/images/image-not-found.png"/>
                             {% endif %}
                         </td>
                     </tr>
@@ -156,13 +160,25 @@
 
                 </div>
             </div>
+            <div id="cod_ficha"></div>
     </main>
     {% endblock %} {% block javascripts %}
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="/javascript/jquery-barcode.js"></script>
     <script type="text/javascript">
-        {
-            window.print();
-            window.close();
+    $(function() {  
+        $id = "{{ fichas.getImagen }}";
+        if(!$id == ""){
+            $("#cod_ficha").barcode(
+                $id.slice(0, -4), // Valor del codigo de barras imagen recortando la URL
+                "code128", // tipo (cadena)
+                {barWidth:2, barHeight:50}
+            );
         }
+    });
+        
+    {# window.print();
+    window.close(); #}
     </script>
     {% endblock %}
 </body>

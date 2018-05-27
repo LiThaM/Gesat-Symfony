@@ -13,7 +13,7 @@
     <table>
         <thead>
             <tr>
-                <th colspan="2"> SAT</th>
+                <th colspan="2"> UID SAT</th>
             </tr>
         </thead>
         <tbody>
@@ -42,7 +42,7 @@
         </tdoby>´
         <thead>
             <tr>
-                <th colspan="2"> TERMINAL</th>
+                <th colspan="2"> FICHA SAT</th>
             </tr>
         </thead>
         <tbody>
@@ -50,8 +50,14 @@
                 <td colspan="2">{{ fichas.getModeloEquipo() }}</td>
             </tr>
             <tr>
-                {% if fichas.getCodigoDesbloqueo() %}<td {% if fichas.getCodigoPin() == null %} colspan="2" {% endif %}>{{ fichas.getCodigoDesbloqueo() }}</td>{% endif %}
+                {% if fichas.getCodigoDesbloqueo() %}<td {% if fichas.getCodigoPin() == null %} colspan="2" {% endif %}>CD: {{ fichas.getCodigoDesbloqueo() }}</td>{% endif %}
                 {% if fichas.getCodigoPin() %}<td>SIM: {{ fichas.getCodigoPin() }}</td>{% endif %}
+            </tr>
+            <tr>
+                <td colspan="2">{{ fichas.getFechaEntrada|date('d/m/Y h:m:s') }} </td>
+            </tr>
+            <tr>
+                <td colspan="2">{{ fichas.getDescripcionAveria() }}</td>
             </tr>
         </tbody>
         {% if fichas.getImei() %}
@@ -81,6 +87,7 @@
         </tbody>
         {% endif %}
         </table>
+        <div class="confidencial">* Este documento es confidencial, por favor destruya este documento, en caso de no reconocerlo.</div>
     </main>
     {% endblock %}
     {% block javascripts %}
@@ -89,25 +96,28 @@
         <script type="text/javascript">
         //Barcode
             $(function() {  
-                $id = "{{ fichas.getId }}";
+                $id = "{{ fichas.getImagen }}";
                 $imei = "{{ fichas.getImei }}";
                 $ns = "{{ fichas.getNumeroSerie }}";
                 if(!$id == ""){
                     $("#cod_ficha").barcode(
-                        "{{ fichas.getId }}", // Valor del codigo de barras
-                        "code128" // tipo (cadena)
+                        $id.slice(0, -4), // Valor del codigo de barras imagen recortando la URL
+                        "code128", // tipo (cadena)
+                        {barWidth:1, barHeight:50}
                     );
                 }
                 if(!$imei == ""){
                     $("#cod_imei").barcode(
-                        "{{ fichas.getImei }}", // Valor del codigo de barras
-                        "code128" // tipo (cadena)
+                        $imei, // Valor del codigo de barras
+                        "code128", // tipo (cadena)
+                        {barWidth:1, barHeight:50}
                     );
                 }
                 if(!$ns == ""){
                     $("#cod_ns").barcode(
-                        "{{ fichas.getNumeroSerie }}", // Valor del codigo de barras
-                        "code128" // tipo (cadena)
+                        $ns, // Valor del codigo de barras
+                        "code128", // tipo (cadena)
+                        {barWidth:1, barHeight:50}
                     );
                 }
             });

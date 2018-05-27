@@ -4,18 +4,16 @@
 	border: 0;
 	box-sizing: content-box;
     color: inherit;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: "Roboto Condensed";
 	font-size: 12px;
 	font-style: inherit;
 	font-weight: inherit;
 	line-height: inherit;
 	list-style: none;
-	margin: 0;
+	/* margin: 0; */
 	margin-top: 0;
 	padding: 0;
-	text-decoration: none;
-	vertical-align: top;
-	
+	text-decoration: none;	
 }
 /* table */
 
@@ -25,3 +23,12 @@ th, td { border-width: 1px; padding: 0.5em; position: relative; text-align: left
 th, td { border-radius: 0.25em; border-style: solid; }
 th { background: #EEE; border-color: #BBB; font-weight: bold; }
 td { border-color: #DDD; }
+div.confidencial{
+	width: auto;
+	font-size: 10px;
+}
+div.cod_ficha{
+	display: inline-block;
+	text-align: left; /* requerido para volver a alinear texto izquierda */
+
+}
