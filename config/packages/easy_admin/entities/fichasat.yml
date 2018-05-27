@@ -59,7 +59,7 @@ easy_admin:
                     - { property: 'codigoDesbloqueo', label: 'Codigo Desbloqueo:' }
                     - { property: 'codigoPin', label: 'Codigo Pin SIM:' }
                     - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
-                    - { property: 'imagenFicha', label: 'Parte Superior:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
+                    - { property: 'imagenFicha', label: 'Parte Superior:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%',  type_options: { required: true } }
                     - { type: 'divider' }
                     - { property: 'imagenFicha2', label: 'Parte Inferior:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
                     - { type: 'divider' }
@@ -77,7 +77,7 @@ easy_admin:
                     - { property: 'imagen', type: 'image', label: 'Imagen Estado', base_path: '%app.path.ficha_imagenes%' }
                     - { property: 'modeloEquipo', label: 'Marca & Modelo'}
                     - { property: 'revisadoTecnico', label: 'Revisado', type: 'boolean' }
-                    - { property: 'revisiones', label: 'Revisado'}
+                    - { property: 'revisiones', label: 'REV'}
                     - { property: 'entregadoCliente', label: 'Entregado', type: 'toggle'}
                     - { property: 'imei', label: 'Numero IMEI'}
                     - { property: 'numeroSerie', label: 'Numero de Serie'}
