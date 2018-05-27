@@ -9,30 +9,77 @@
 </head>
 <body>
     {% block body %}
-    <br>
     <main>
     <table>
+        <thead>
+            <tr>
+                <th colspan="2"> SAT</th>
+            </tr>
+        </thead>
         <tbody>
             <tr>
-                <td colspan="2">FICHA
-                    <div id="cod_ficha"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{ clientes.getNombre() }} 
-                </td>
-                <td>
-                    {{ clientes.getApellidos() }}
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">IMEI
-                    <div id="cod_imei"></div>
+                <td colspan="2" align="center"><div id="cod_ficha"></div>
                 </td>
             </tr>
         </tbody>
-
+                <thead>
+            <tr>
+                <th colspan="2"> INFORMACIÓN PROPIETARIO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    {{ clientes.getNombre() }} 
+                    {{ clientes.getApellidos() }}
+                    <br>
+                    {{ clientes.getMovil() }}
+                    {% if clientes.getTelefonoFijo() %}
+                       -  {{ clientes.getTelefonoFijo() }}
+                    {% endif %}
+                </td>
+            </tr>
+        </tdoby>´
+        <thead>
+            <tr>
+                <th colspan="2"> TERMINAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2">{{ fichas.getModeloEquipo() }}</td>
+            </tr>
+            <tr>
+                {% if fichas.getCodigoDesbloqueo() %}<td {% if fichas.getCodigoPin() == null %} colspan="2" {% endif %}>{{ fichas.getCodigoDesbloqueo() }}</td>{% endif %}
+                {% if fichas.getCodigoPin() %}<td>SIM: {{ fichas.getCodigoPin() }}</td>{% endif %}
+            </tr>
+        </tbody>
+        {% if fichas.getImei() %}
+        <thead>
+            <tr>
+                <th colspan="2"> NUMERO IMEI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" align="center"><div id="cod_imei"></div>
+                </td>
+            </tr>
+        </tbody>
+        {% endif %}
+        {% if fichas.getNumeroSerie() %}
+        <thead>
+            <tr>
+                <th colspan="2"> NUMERO DE SERIE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" align="center"><div id="cod_ns"></div>
+                </td>
+            </tr>
+        </tbody>
+        {% endif %}
         </table>
     </main>
     {% endblock %}
@@ -41,16 +88,31 @@
         <script type="text/javascript" src="/javascript/jquery-barcode.js"></script>
         <script type="text/javascript">
         //Barcode
-            $(function() {   
-                $("#cod_ficha").barcode(
-                    "{{ fichas.getId }}", // Valor del codigo de barras
-                    "code128" // tipo (cadena)
-                );
-                $("#cod_imei").barcode(
-                    "{{ fichas.getImei }}", // Valor del codigo de barras
-                    "code128" // tipo (cadena)
-                );
+            $(function() {  
+                $id = "{{ fichas.getId }}";
+                $imei = "{{ fichas.getImei }}";
+                $ns = "{{ fichas.getNumeroSerie }}";
+                if(!$id == ""){
+                    $("#cod_ficha").barcode(
+                        "{{ fichas.getId }}", // Valor del codigo de barras
+                        "code128" // tipo (cadena)
+                    );
+                }
+                if(!$imei == ""){
+                    $("#cod_imei").barcode(
+                        "{{ fichas.getImei }}", // Valor del codigo de barras
+                        "code128" // tipo (cadena)
+                    );
+                }
+                if(!$ns == ""){
+                    $("#cod_ns").barcode(
+                        "{{ fichas.getNumeroSerie }}", // Valor del codigo de barras
+                        "code128" // tipo (cadena)
+                    );
+                }
             });
+
+            
             {#
                 window.print();
                 window.close();
