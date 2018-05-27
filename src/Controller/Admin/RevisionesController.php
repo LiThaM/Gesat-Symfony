@@ -35,19 +35,19 @@ class RevisionesController extends BaseAdminController
         }
     }
 
-    public function envioEmailRevision($entity)
-    {
-        $message = (new \Swift_Message('[GESAT] Revisión:'))
-            ->setFrom('bitspontevedra@gmail.com')
-            ->setTo($entity->getIdFichaSat()->getNameClientes()->getEmail())
-            ->setBody(
-                $this->renderView(
-                    'correorevision.html.twig',
-                    array('revision' => $entity)
-                ),
-                'text/html'
-            )
-        ;
-        $this->get('mailer')->send($message);
-    }
+    // public function envioEmailRevision($entity)
+    // {
+    //     $message = (new \Swift_Message('[GESAT] Revisión:'))
+    //         ->setFrom('bitspontevedra@gmail.com')
+    //         ->setTo($entity->getIdFichaSat()->getNameClientes()->getEmail())
+    //         ->setBody(
+    //             $this->renderView(
+    //                 'correorevision.html.twig',
+    //                 array('revision' => $entity)
+    //             ),
+    //             'text/html'
+    //         )
+    //     ;
+    //     $this->get('mailer')->send($message);
+    // }
 }
