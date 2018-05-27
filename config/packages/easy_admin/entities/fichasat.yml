@@ -66,6 +66,7 @@ easy_admin:
                     - { property: 'imagenFicha3', label: 'Daños:', type: 'vich_image', base_path: '%app.path.ficha_imagenes%' }
             list:
                 actions:
+                    - { name: 'imprimirTicket', icon: 'ticket', label: '', target: '_blank' }
                     - { name: 'imprimirFicha', icon: 'print', label: '', target: '_blank' }
                     - { name: 'edit', icon: 'edit', label: '' }
                     - { name: 'show', icon: 'info', label: '' }
@@ -73,13 +74,13 @@ easy_admin:
                 fields:
                     - id
                     - { property: 'revisiones', label: 'Revisiones'}
+                    - { property: 'imagen', type: 'image', label: 'Imagen Estado', base_path: '%app.path.ficha_imagenes%' }
                     - { property: 'modeloEquipo', label: 'Marca & Modelo'}
-                    - { property: 'revisadoTecnico', label: 'Revisado'}
+                    - { property: 'revisadoTecnico', label: 'Revisado', type: 'boolean' }
                     - { property: 'revisiones', label: 'Revisado'}
                     - { property: 'entregadoCliente', label: 'Entregado', type: 'toggle'}
                     - { property: 'imei', label: 'Numero IMEI'}
                     - { property: 'numeroSerie', label: 'Numero de Serie'}
-                    - { property: 'imagen', type: 'image', label: 'Imagen Estado', base_path: '%app.path.ficha_imagenes%' }
                     # - { property: 'imagen2', type: 'image', label: 'Imagen Atrás', base_path: '%app.path.ficha_imagenes%' }
                     # - { property: 'imagen3', type: 'image', label: 'Imagen Golpe ', base_path: '%app.path.ficha_imagenes%' }                    
                     - { property: 'fechaEntrada', format: 'd/m/Y H:i:s' }  

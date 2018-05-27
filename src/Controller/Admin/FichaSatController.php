@@ -24,6 +24,21 @@ class FichaSatController extends BaseAdminController
             array('fichas' => $entity, 'clientes' => $entityClientes)
         );
     }
+    public function imprimirTicketAction()
+    {
+        //Recorro con el id del action
+        $id = $this->request->query->get('id');
+        //recojo los datos de esa entidad
+        $entity = $this->em->getRepository('App:FichaSat')->find($id);
+        //recorro su Join de Clientes
+        $entityClientes = $this->em->getRepository('App:Clientes')->find($entity->getNameClientes('id'));
+        
+        //Lanzamos el View
+        return $this->render(
+            'imprimirtickets.html.twig',
+            array('fichas' => $entity, 'clientes' => $entityClientes)
+        );
+    }
     /**
      * This method overrides the default query builder used to search for this
      * entity. This allows to make a more complex search joining related entities.

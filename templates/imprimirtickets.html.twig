@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">     
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+        <link href="{{ asset('css/imprimirtck.css') }}" rel="stylesheet">
+     {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <br>
+    <main>
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="2">FICHA
+                    <div id="cod_ficha"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ clientes.getNombre() }} 
+                </td>
+                <td>
+                    {{ clientes.getApellidos() }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">IMEI
+                    <div id="cod_imei"></div>
+                </td>
+            </tr>
+        </tbody>
+
+        </table>
+    </main>
+    {% endblock %}
+    {% block javascripts %}
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="/javascript/jquery-barcode.js"></script>
+        <script type="text/javascript">
+        //Barcode
+            $(function() {   
+                $("#cod_ficha").barcode(
+                    "{{ fichas.getId }}", // Valor del codigo de barras
+                    "code128" // tipo (cadena)
+                );
+                $("#cod_imei").barcode(
+                    "{{ fichas.getImei }}", // Valor del codigo de barras
+                    "code128" // tipo (cadena)
+                );
+            });
+            {#
+                window.print();
+                window.close();
+        #}
+        </script>
+    {% endblock %}
+</body>
+
+</html>
