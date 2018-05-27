@@ -15,12 +15,15 @@ easy_admin:
             #help: 'Global message displayed in all views'
             form:
                 fields:
-                    - { type: 'group', css_class: 'col-sm-8', label: 'Información Cliente', icon: 'user' }
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Informe Técnico', icon: 'user' }
+                    - { property: 'idFichaSat', label: 'Ficha Técnica:', type: 'easyadmin_autocomplete', type_options: { required: true } }
                     - { property: 'descripcionAveria', label: 'Comentario técnico:',
                         help: 'Detalla la información lo máximo posíble.'  }
                     - { type: 'group', css_class: 'col-sm-4', label: 'Información Cliente', icon: 'user' }
                     - { property: 'estadoAveria', label: 'Estado averia', type_options: { required: true },
                         help: 'Pendiente de presupuesto' }
-                    - { property: 'idFichaSat', label: 'Ficha Técnica:', type: 'easyadmin_autocomplete', type_options: { required: true } }
-                    
+                    - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
+                    - { property: 'imagenRevision', label: 'Resultado:', type: 'vich_image', base_path: '%app.path.revisiones_imagenes%' }
+
+
 

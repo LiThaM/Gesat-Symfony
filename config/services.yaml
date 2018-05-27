@@ -3,6 +3,7 @@
 parameters:
     locale: 'es'
     app.path.ficha_imagenes:    /images/fichacte
+    app.path.revisiones_imagenes:   /images/revisiones
 
 
 services:

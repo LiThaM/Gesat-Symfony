@@ -5,11 +5,14 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="revisiones")
+ * @Vich\Uploadable
  */
 class Revisiones{
 
@@ -42,8 +45,35 @@ class Revisiones{
      */
     private $setUpdateAt;
 
+    /**
+     * @Vich\UploadableField(mapping="revisiones_imagenes", fileNameProperty="imagen")
+     * @var File
+     */
+    private $imagenRevision;
 
+    public function setImagenRevision(File $imagen = null)
+    {
+        $this->imagenRevision = $imagen;
 
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        //if ($imagen) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            //$this->fechaEntrada = new \DateTime('now');
+        //}
+    }
+
+    public function getImagenRevision()
+    {
+        return $this->imagenRevision;
+    }
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
+     */
+    private $imagen;
+    
     /**
      * Get the value of id
      */ 
@@ -158,4 +188,28 @@ class Revisiones{
           
          return $this->id."# [".$this->estadoAveria."]";
      }
+
+    /**
+     * Get the value of imagen
+     *
+     * @return  string
+     */ 
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    /**
+     * Set the value of imagen
+     *
+     * @param  string  $imagen
+     *
+     * @return  self
+     */ 
+    public function setImagen(string $imagen)
+    {
+        $this->imagen = $imagen;
+
+        return $this;
+    }
 }
