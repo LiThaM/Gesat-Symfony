@@ -22,25 +22,25 @@ easy_admin:
             icon: 'user-circle'
             children:
               - { entity: 'Clientes', label: 'Nuevo Cliente', icon: 'user-plus', params: { action: 'new' } }
-              - { entity: 'Clientes', label: 'Listado de Clientes', icon: 'users'}
+              - { entity: 'Clientes', label: 'Listado Clientes', icon: 'users'}
           #Entidad FichaSAT 
           - label: 'SAT'   
             icon: 'bug'
             children:
               - { entity: 'FichaSat', label: 'Nueva Ficha', icon: 'code', params: { action: 'new' } }
-              - { entity: 'FichaSat', label: 'Listado de Fichas', icon: 'codepen'}
+              - { entity: 'FichaSat', label: 'Listado Fichas', icon: 'codepen'}
           #Entidad Revisiones
           - label: 'Revisiones SAT'
             icon: 'eye'
             children:
               - { entity: 'Revisiones', label: 'Nueva Revisión', icon: 'comment', params: { action: 'new' } }
-              - { entity: 'Revisiones', label: 'Listado de Reisiones', icon: 'comments' }
+              - { entity: 'Revisiones', label: 'Listado Revisiones', icon: 'comments' }
               # - { entity: 'EstadoAveria', label: 'Listado de Reisiones', icon: 'cog' }
           # Configuración
           - label: 'Configuración'
             icon: 'cog'
             children:
               - { entity: 'EstadoAveria', label: 'Nuevo Estado', icon: 'cogs', params: { action: 'new' } }     
-              - { entity: 'EstadoAveria', label: 'Listado de Estados', icon: 'cogs' }
+              - { entity: 'EstadoAveria', label: 'Listado Estados', icon: 'cogs' }
      
 

@@ -1,0 +1,8 @@
+# See https://symfony.com/doc/current/email/dev_environment.html
+swiftmailer:
+    transport: gmail
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    delivery_address: soporteaimen@gmail.com
+    disable_delivery: true
+

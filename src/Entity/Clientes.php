@@ -53,7 +53,7 @@ class Clientes
     private $movil;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $email;
 

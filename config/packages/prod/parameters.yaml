@@ -1,0 +1,5 @@
+parameters:
+    mailer_transport: smtp
+    mailer_host: smtp.gmail.com
+    mailer_user: bitspontevedra@gmail.com
+    mailer_password: L3g0l4s2017
