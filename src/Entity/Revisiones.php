@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
@@ -46,6 +47,12 @@ class Revisiones{
     private $setUpdateAt;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
+     */
+    private $imagen;
+
+    /**
      * @Vich\UploadableField(mapping="revisiones_imagenes", fileNameProperty="imagen")
      * @var File
      */
@@ -63,16 +70,11 @@ class Revisiones{
             //$this->fechaEntrada = new \DateTime('now');
         //}
     }
-    
+
     public function getImagenRevision()
     {
         return $this->imagenRevision;
     }
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @var string
-     */
-    private $imagen;
     
     /**
      * Get the value of id
