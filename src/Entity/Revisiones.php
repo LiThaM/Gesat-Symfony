@@ -53,7 +53,7 @@ class Revisiones{
 
     public function setImagenRevision(File $imagen = null)
     {
-        return $this->imagenRevision = $imagen;
+        $this->imagenRevision = $imagen;
 
         // VERY IMPORTANT:
         // It is required that at least one field changes if you are using Doctrine,
@@ -63,7 +63,7 @@ class Revisiones{
             //$this->fechaEntrada = new \DateTime('now');
         //}
     }
-
+    
     public function getImagenRevision()
     {
         return $this->imagenRevision;
