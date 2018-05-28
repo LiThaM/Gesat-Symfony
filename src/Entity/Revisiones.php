@@ -53,7 +53,7 @@ class Revisiones{
 
     public function setImagenRevision(File $imagen = null)
     {
-        $this->imagenRevision = $imagen;
+        return $this->imagenRevision = $imagen;
 
         // VERY IMPORTANT:
         // It is required that at least one field changes if you are using Doctrine,
