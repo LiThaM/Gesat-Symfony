@@ -17,7 +17,7 @@ class RevisionesController extends BaseAdminController
 
         parent::persistEntity($entity);
     }
-    
+
     public function revisionTerminal($entity)
     {
         //Asiganamos la fecha de reparado

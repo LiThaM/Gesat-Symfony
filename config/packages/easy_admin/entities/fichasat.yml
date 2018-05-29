@@ -46,6 +46,8 @@ easy_admin:
                     - { type: 'divider' }
                     - { property: 'entregadoCliente', label: 'Entregado al Cliente'}
                     - { type: 'divider' }
+                    - { property: 'uid', label: 'UID', help: 'Cambiar en caso de excepción'}
+                    - { type: 'divider' }
                     - { property: 'descripcionAveria', label: 'Descripción Avería:'}
                     - { property: 'accesorios', label: 'Accesorios incluídos:'}
                     - { type: 'group', css_class: 'col-sm-4', label: 'Información Terminal:', icon: 'mobile' }

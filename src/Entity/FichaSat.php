@@ -43,6 +43,11 @@ class FichaSat
     private $numeroSerie;
 
     /**
+     * @ORM\Column(type="string", length=128, nullable=true)
+     */
+    private $uid;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $descripcionAveria;
@@ -103,14 +108,6 @@ class FichaSat
     public function setImagenFicha(File $imagen = null)
     {
         $this->imagenFicha = $imagen;
-
-        // VERY IMPORTANT:
-        // It is required that at least one field changes if you are using Doctrine,
-        // otherwise the event listeners won't be called and the file is lost
-        if ($imagen) {
-            // if 'updatedAt' is not defined in your entity, use another property
-            $this->fechaEntrada = new \DateTime('now');
-        }
     }
 
     public function getImagenFicha()
@@ -561,7 +558,28 @@ class FichaSat
     #CONSTRUCTOR
     public function __construct()
     {
+        $this->fechaEntrada = new \DateTime('now');
         #Creamos el array
         $this->revisiones = new ArrayCollection();
+    }
+
+    /**
+     * Get the value of uid
+     */ 
+    public function getUid()
+    {
+        return $this->uid;
+    }
+
+    /**
+     * Set the value of uid
+     *
+     * @return  self
+     */ 
+    public function setUid($uid)
+    {
+        $this->uid = $uid;
+
+        return $this;
     }
 }
