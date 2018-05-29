@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use Symfony\Component\HttpFoundation\Request;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 
 /**
@@ -11,6 +12,13 @@ class FichaSatController extends BaseAdminController
 {
     public function persistEntity($entity)
     {
+        if(method_exists($entity, 'getNameClientes')){
+            if($entity->getNameClientes() == null & $entity->getImagenFicha() == null){
+                $this->addFlash('error', 'Te falta introducir el cliente o la primera imágen.');
+                return; 
+            }
+
+        }
         parent::persistEntity($entity);
         if (method_exists($entity, 'getUid')) {
             $this->generadorUID($entity);
@@ -19,6 +27,10 @@ class FichaSatController extends BaseAdminController
 
     public function updateEntity($entity)
     {
+        if($entity->getNameClientes() == null & $entity->getImagenFicha() == null){
+            $this->addFlash('error', 'Te falta introducir el cliente o la primera imágen.');
+            return; 
+        }
         parent::updateEntity($entity);
         if (method_exists($entity, 'getUid')) {
             if (!$entity->getUid()) {
