@@ -21,21 +21,21 @@ class FichaSatController extends BaseAdminController
     {
         parent::updateEntity($entity);
         if (method_exists($entity, 'getUid')) {
-            $this->generadorUID($entity);
+            if (!$entity->getUid()) {
+                $this->generadorUID($entity);
+            }
         }
     }
 
     public function generadorUID($entity)
     {
-        dump($entity);
-        if (!$entity->getUid()) {
             $em = $this->getDoctrine()->getManager();
             //generamos UID a base de uniqueID imagen
             $key = substr($entity->getImagen(), 0, 22);
             $entity->setUid($key);
             $em->persist($entity);
             $em->flush();
-        }
+        
     }
     public function imprimirFichaAction()
     {
