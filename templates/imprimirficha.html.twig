@@ -167,7 +167,7 @@
     <script type="text/javascript" src="/javascript/jquery-barcode.js"></script>
     <script type="text/javascript">
     $(function() {  
-        $id = "{{ fichas.getImagen }}";
+        $id = "{{ fichas.getUid }}";
         if(!$id == ""){
             $("#cod_ficha").barcode(
                 $id.slice(0, -4), // Valor del codigo de barras imagen recortando la URL

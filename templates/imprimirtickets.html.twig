@@ -96,12 +96,12 @@
         <script type="text/javascript">
         //Barcode
             $(function() {  
-                $id = "{{ fichas.getImagen }}";
+                $uid = "{{ fichas.getUid }}";
                 $imei = "{{ fichas.getImei }}";
                 $ns = "{{ fichas.getNumeroSerie }}";
-                if(!$id == ""){
+                if(!$uid == ""){
                     $("#cod_ficha").barcode(
-                        $id.slice(0, -4), // Valor del codigo de barras imagen recortando la URL
+                        $id, // Valor del codigo de barras imagen recortando la URL
                         "code128", // tipo (cadena)
                         {barWidth:1, barHeight:50}
                     );
