@@ -12,7 +12,7 @@ class FichaSatController extends BaseAdminController
 {
     public function persistEntity($entity)
     {
-        if($this->controlErrors($entity))
+        if($this->controlErrors($entity, $estado = "persist"))
         {
             return;
         }
@@ -24,7 +24,7 @@ class FichaSatController extends BaseAdminController
 
     public function updateEntity($entity)
     {
-        if($this->controlErrors($entity))
+        if($this->controlErrors($entity, $estado = "update"))
         {
             return;
         }
@@ -36,21 +36,23 @@ class FichaSatController extends BaseAdminController
         }
     }
 
-    public function controlErrors($entity)
+    public function controlErrors($entity, $estado = null)
     {
         $error = 0;
         if($entity->getNameClientes() == null){
             $error++;
             $this->addFlash('info', 'Te falta introducir el cliente.');     
         }
-        if($entity->getImagenFicha() == null){
-            $error++;
-            $this->addFlash('info', 'Te falta introducir la imágen del estado.');
-            return true;     
-        } 
-        if($entity->getImagenFicha()->getError() == 1) {
-            $error++;
-            $this->addFlash('error', 'Error con la imagen demasiado grande o otro tipo de error.');     
+        if($estado == "persist"){
+            if($entity->getImagenFicha() == null){
+                $error++;
+                $this->addFlash('info', 'Te falta introducir la imágen del estado.');
+                return true;     
+            } 
+            if($entity->getImagenFicha()->getError() == 1) {
+                $error++;
+                $this->addFlash('error', 'Error con la imagen demasiado grande o otro tipo de error.');     
+            }
         }
         if($error > 0) return true; else return false;
     }

@@ -266,14 +266,13 @@ class FichaSat
      */
     public function setEntregadoCliente($entregadoCliente)
     {
-        if($entregadoCliente == 1){
-            $this->setFechaReparado(new \DateTime());
+        if($entregadoCliente){
+            $this->setFechaEntregado(new \DateTime());
             $this->entregadoCliente = $entregadoCliente;
         } else {
-            $this->setFechaReparado(null);
+            $this->setFechaEntregado(null);
             $this->entregadoCliente = $entregadoCliente;
         }
-
         return $this;
     }
 
