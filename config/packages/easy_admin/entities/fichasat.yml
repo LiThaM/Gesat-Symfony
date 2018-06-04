@@ -86,3 +86,4 @@ easy_admin:
                     # - { property: 'imagen2', type: 'image', label: 'Imagen Atrás', base_path: '%app.path.ficha_imagenes%' }
                     # - { property: 'imagen3', type: 'image', label: 'Imagen Golpe ', base_path: '%app.path.ficha_imagenes%' }                    
                     - { property: 'fechaEntrada', format: 'd/m/Y H:i:s' }  
+                    # - { property: 'fechaEntregado', format: 'd/m/Y H:i:s' }  

@@ -24,10 +24,17 @@ class RevisionesController extends BaseAdminController
     }
     public function controlErrors($entity)
     {
+        dump($entity);
         $error = 0;
         if($entity->getIdFichaSat() == null){
             $error++;
-            $this->addFlash('info', 'Te falta vincular la ficha a la que hace referencia.');
+            $this->addFlash('error', 'Te falta vincular la ficha a la que hace referencia.');
+        }
+        if($entity->getImagenRevision()){
+            if($entity->getImagenRevision()->getError() == 1) {
+                $error++;
+                $this->addFlash('error', 'Error con la imagen demasiado grande o otro tipo de error.');     
+            }
         }
         if($error > 0) return true; else return false;
     }

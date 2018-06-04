@@ -41,12 +41,12 @@ class FichaSatController extends BaseAdminController
         $error = 0;
         if($entity->getNameClientes() == null){
             $error++;
-            $this->addFlash('info', 'Te falta introducir el cliente.');     
+            $this->addFlash('error', 'Te falta introducir el cliente.');     
         }
         if($estado == "persist"){
             if($entity->getImagenFicha() == null){
                 $error++;
-                $this->addFlash('info', 'Te falta introducir la imágen del estado.');
+                $this->addFlash('error', 'Te falta introducir la imágen del estado.');
                 return true;     
             } 
             if($entity->getImagenFicha()->getError() == 1) {
