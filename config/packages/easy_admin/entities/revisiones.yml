@@ -13,6 +13,17 @@ easy_admin:
             controller: App\Controller\Admin\RevisionesController
             # disabled_actions: ['show']            
             #help: 'Global message displayed in all views'
+            list:
+                actions:
+                    - { name: 'edit', icon: 'edit', label: '' }
+                    - { name: 'show', icon: 'info', label: '' }
+                    - { name: 'delete', icon: 'trash', label: '' }
+                fields:
+                    - id
+                    - { property: 'setUpdateAt', label: 'Fecha Revisión', format: 'd/m/Y H:i:s'}
+                    - { property: 'idFichaSat', label: 'Ficha Técnica:'}
+                    - { property: 'imagen', type: 'image', label: 'Imagen Revisión:', base_path: '%app.path.revisiones_imagenes%' }
+                    - { property: 'estadoAveria', label: 'Estado averia' }
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-8', label: 'Informe Técnico', icon: 'user' }
@@ -24,6 +35,13 @@ easy_admin:
                         help: 'Pendiente de presupuesto' }
                     - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
                     - { property: 'imagenRevision', label: 'Resultado:', type: 'vich_image', base_path: '%app.path.revisiones_imagenes%' }
-
+            show:
+                fields:
+                    - { property: 'idFichaSat', label: 'Ficha Técnica:'}
+                    - { property: 'descripcionAveria', label: 'Comentario técnico:'}
+                    - { property: 'estadoAveria', label: 'Estado averia' }
+                    - { property: 'setUpdateAt', label: 'Fecha Revisión', format: 'd/m/Y H:i:s'}
+                    - { property: 'imagen', label: 'Imagen Revisión:', type: 'image', base_path: '%app.path.revisiones_imagenes%' }
+                    
 
 

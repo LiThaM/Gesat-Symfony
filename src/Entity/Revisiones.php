@@ -47,7 +47,7 @@ class Revisiones{
     private $setUpdateAt;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      * @var string
      */
     private $imagen;

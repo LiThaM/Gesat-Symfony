@@ -11,13 +11,26 @@ class RevisionesController extends BaseAdminController
 {
     public function persistEntity($entity)
     {
-        if (method_exists($entity, 'getIdFichaSat')) {
-            $this->revisionTerminal($entity);
+        //dump($entity);die;
+        if($this->controlErrors($entity)){
+            return;
+        } else {
+            if (method_exists($entity, 'getIdFichaSat')) {
+                $this->revisionTerminal($entity);
+            }
+            parent::persistEntity($entity);
         }
 
-        parent::persistEntity($entity);
     }
-
+    public function controlErrors($entity)
+    {
+        $error = 0;
+        if($entity->getIdFichaSat() == null){
+            $error++;
+            $this->addFlash('info', 'Te falta vincular la ficha a la que hace referencia.');
+        }
+        if($error > 0) return true; else return false;
+    }
     public function revisionTerminal($entity)
     {
         //Asiganamos la fecha de reparado
