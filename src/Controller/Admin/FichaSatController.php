@@ -12,12 +12,9 @@ class FichaSatController extends BaseAdminController
 {
     public function persistEntity($entity)
     {
-        if(method_exists($entity, 'getNameClientes')){
-            if($entity->getNameClientes() == null & $entity->getImagenFicha() == null){
-                $this->addFlash('error', 'Te falta introducir el cliente o la primera imágen.');
-                return; 
-            }
-
+        if($this->controlErrors($entity))
+        {
+            return;
         }
         parent::persistEntity($entity);
         if (method_exists($entity, 'getUid')) {
@@ -27,9 +24,9 @@ class FichaSatController extends BaseAdminController
 
     public function updateEntity($entity)
     {
-        if($entity->getNameClientes() == null & $entity->getImagenFicha() == null){
-            $this->addFlash('error', 'Te falta introducir el cliente o la primera imágen.');
-            return; 
+        if($this->controlErrors($entity))
+        {
+            return;
         }
         parent::updateEntity($entity);
         if (method_exists($entity, 'getUid')) {
@@ -37,6 +34,25 @@ class FichaSatController extends BaseAdminController
                 $this->generadorUID($entity);
             }
         }
+    }
+
+    public function controlErrors($entity)
+    {
+        $error = 0;
+        if($entity->getNameClientes() == null){
+            $error++;
+            $this->addFlash('info', 'Te falta introducir el cliente.');     
+        }
+        if($entity->getImagenFicha() == null){
+            $error++;
+            $this->addFlash('info', 'Te falta introducir la imágen del estado.');
+            return true;     
+        } 
+        if($entity->getImagenFicha()->getError() == 1) {
+            $error++;
+            $this->addFlash('error', 'Error con la imagen demasiado grande o otro tipo de error.');     
+        }
+        if($error > 0) return true; else return false;
     }
 
     public function generadorUID($entity)

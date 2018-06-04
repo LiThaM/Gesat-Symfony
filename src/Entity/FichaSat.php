@@ -266,7 +266,13 @@ class FichaSat
      */
     public function setEntregadoCliente($entregadoCliente)
     {
-        $this->entregadoCliente = $entregadoCliente;
+        if($entregadoCliente == 1){
+            $this->setFechaReparado(new \DateTime());
+            $this->entregadoCliente = $entregadoCliente;
+        } else {
+            $this->setFechaReparado(null);
+            $this->entregadoCliente = $entregadoCliente;
+        }
 
         return $this;
     }
@@ -306,9 +312,9 @@ class FichaSat
         // ModeloEquipo
         // NombreCliente
         if ($this->imei) {
-            return "[Modelo: ".$this->modeloEquipo."]-[IMEI: ".$this->imei."]-[Cliente: ".$this->nameClientes."]";
+            return "[Modelo: ".$this->modeloEquipo."]-[IMEI: ".$this->imei."]";
         } else {
-            return "[Modelo: ".$this->modeloEquipo."]-[S/N: ".$this->numeroSerie."]-[Cliente: ".$this->nameClientes."]";
+            return "[Modelo: ".$this->modeloEquipo."]-[S/N: ".$this->numeroSerie."]";
         }
     }
 
