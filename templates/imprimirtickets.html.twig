@@ -91,44 +91,41 @@
     </main>
     {% endblock %}
     {% block javascripts %}
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script type="text/javascript" src="/javascript/jquery-barcode.js"></script>
-        <script type="text/javascript">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="/javascript/jquery-barcode.js"></script>
+    <script type="text/javascript">
         //Barcode
-            $(function() {  
-                $uid = "{{ fichas.getUid }}";
-                $imei = "{{ fichas.getImei }}";
-                $ns = "{{ fichas.getNumeroSerie }}";
-                if(!$uid == ""){
-                    $("#cod_ficha").barcode(
-                        $id, // Valor del codigo de barras imagen recortando la URL
-                        "code128", // tipo (cadena)
-                        {barWidth:1, barHeight:50}
-                    );
-                }
-                if(!$imei == ""){
-                    $("#cod_imei").barcode(
-                        $imei, // Valor del codigo de barras
-                        "code128", // tipo (cadena)
-                        {barWidth:1, barHeight:50}
-                    );
-                }
-                if(!$ns == ""){
-                    $("#cod_ns").barcode(
-                        $ns, // Valor del codigo de barras
-                        "code128", // tipo (cadena)
-                        {barWidth:1, barHeight:50}
-                    );
-                }
-            });
-
-            
-            {#
-                window.print();
-                window.close();
-        #}
-        </script>
+        $(function() {  
+            $uid = "{{ fichas.getUid }}";
+            $imei = "{{ fichas.getImei }}";
+            $ns = "{{ fichas.getNumeroSerie }}";
+            if(!$uid == ""){
+                $("#cod_ficha").barcode(
+                    $uid, // Valor del codigo de barras imagen recortando la URL
+                    "code128", // tipo (cadena)
+                    {barWidth:1, barHeight:50}
+                );
+            }
+            if(!$imei == ""){
+                $("#cod_imei").barcode(
+                    $imei, // Valor del codigo de barras
+                    "code128", // tipo (cadena)
+                    {barWidth:1, barHeight:50}
+                );
+            }
+            if(!$ns == ""){
+                $("#cod_ns").barcode(
+                    $ns, // Valor del codigo de barras
+                    "code128", // tipo (cadena)
+                    {barWidth:1, barHeight:50}
+                );
+            }
+        });  
+    setTimeout(function(){
+    window.print();
+    window.close(); 
+    }, 600)
+    </script>
     {% endblock %}
 </body>
-
 </html>

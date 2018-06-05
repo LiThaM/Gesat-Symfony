@@ -171,18 +171,19 @@
     <script type="text/javascript" src="/javascript/jquery-barcode.js"></script>
     <script type="text/javascript">
     $(function() {  
-        $id = "{{ fichas.getUid }}";
-        if(!$id == ""){
+        $uid = "{{ fichas.getUid }}";
+        if(!$uid == ""){
             $("#cod_ficha").barcode(
-                $id, // Valor del codigo de barras imagen recortando la URL
+                $uid, // Valor del codigo de barras imagen recortando la URL
                 "code128", // tipo (cadena)
                 {barWidth:2, barHeight:50}
             );
         }
     });
-        
-    {# window.print();
-    window.close(); #}
+    setTimeout(function(){
+    window.print();
+    window.close(); 
+    }, 900)
     </script>
     {% endblock %}
 </body>
