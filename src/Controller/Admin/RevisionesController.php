@@ -11,7 +11,6 @@ class RevisionesController extends BaseAdminController
 {
     public function persistEntity($entity)
     {
-        //dump($entity);die;
         if($this->controlErrors($entity)){
             return;
         } else {
@@ -24,7 +23,6 @@ class RevisionesController extends BaseAdminController
     }
     public function controlErrors($entity)
     {
-        dump($entity);
         $error = 0;
         if($entity->getIdFichaSat() == null){
             $error++;
