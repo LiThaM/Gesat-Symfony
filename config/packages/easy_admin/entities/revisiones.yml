@@ -13,6 +13,28 @@ easy_admin:
             controller: App\Controller\Admin\RevisionesController
             # disabled_actions: ['show']            
             #help: 'Global message displayed in all views'
+            new:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Informe Técnico', icon: 'user' }
+                    - { property: 'idFichaSat', label: 'Ficha Técnica:', type: 'easyadmin_autocomplete', type_options: { required: true } }
+                    - { property: 'descripcionAveria', label: 'Comentario técnico:',
+                        help: 'Detalla la información lo máximo posíble.'  }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Información Cliente', icon: 'user' }
+                    - { property: 'estadoAveria', label: 'Estado averia', type_options: { required: true },
+                        help: 'Pendiente de presupuesto' }
+                    - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
+                    - { property: 'imagenRevision', label: 'Resultado:', type: 'vich_image', base_path: '%app.path.revisiones_imagenes%' }
+            edit:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Informe Técnico', icon: 'user' }
+                    - { property: 'idFichaSat', label: 'Ficha Técnica:', type: 'easyadmin_autocomplete', type_options: { required: true } }
+                    - { property: 'descripcionAveria', label: 'Comentario técnico:',
+                        help: 'Detalla la información lo máximo posíble.'  }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Información Cliente', icon: 'user' }
+                    - { property: 'estadoAveria', label: 'Estado averia', type_options: { required: true },
+                        help: 'Pendiente de presupuesto' }
+                    - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
+                    - { property: 'imagenRevision', label: 'Resultado:', type: 'vich_image', base_path: '%app.path.revisiones_imagenes%' }
             list:
                 actions:
                     - { name: 'edit', icon: 'edit', label: '' }
@@ -24,24 +46,4 @@ easy_admin:
                     - { property: 'idFichaSat', label: 'Ficha Técnica:'}
                     - { property: 'imagen', type: 'image', label: 'Imagen Revisión:', base_path: '%app.path.revisiones_imagenes%' }
                     - { property: 'estadoAveria', label: 'Estado averia' }
-            form:
-                fields:
-                    - { type: 'group', css_class: 'col-sm-8', label: 'Informe Técnico', icon: 'user' }
-                    - { property: 'idFichaSat', label: 'Ficha Técnica:', type: 'easyadmin_autocomplete', type_options: { required: true } }
-                    - { property: 'descripcionAveria', label: 'Comentario técnico:',
-                        help: 'Detalla la información lo máximo posíble.'  }
-                    - { type: 'group', css_class: 'col-sm-4', label: 'Información Cliente', icon: 'user' }
-                    - { property: 'estadoAveria', label: 'Estado averia', type_options: { required: true },
-                        help: 'Pendiente de presupuesto' }
-                    - { type: 'group', css_class: 'new-row: col-sm-4', label: 'Estado Terminal', icon: 'camera-retro' }
-                    - { property: 'imagenRevision', label: 'Resultado:', type: 'vich_image', base_path: '%app.path.revisiones_imagenes%' }
-            show:
-                fields:
-                    - { property: 'idFichaSat', label: 'Ficha Técnica:'}
-                    - { property: 'descripcionAveria', label: 'Comentario técnico:'}
-                    - { property: 'estadoAveria', label: 'Estado averia' }
-                    - { property: 'setUpdateAt', label: 'Fecha Revisión', format: 'd/m/Y H:i:s'}
-                    - { property: 'imagen', label: 'Imagen Revisión:', type: 'image', base_path: '%app.path.revisiones_imagenes%' }
-                    
-
 

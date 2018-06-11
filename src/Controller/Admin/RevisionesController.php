@@ -21,6 +21,10 @@ class RevisionesController extends BaseAdminController
         }
 
     }
+    public function updateEntity($entity){
+        $this->controlErrors($entity);
+        parent::updateEntity($entity);  
+    }
     public function controlErrors($entity)
     {
         $error = 0;
