@@ -26,7 +26,7 @@ class FichaSatController extends BaseAdminController
     {
         if($this->controlErrors($entity, $estado = "update"))
         {
-            return;
+            return $this->redirectToRoute('admin', ['entity' => 'FichaSat', 'action'=>'list']);  
         }
         parent::updateEntity($entity);
         if (method_exists($entity, 'getUid')) {
@@ -47,7 +47,7 @@ class FichaSatController extends BaseAdminController
             if($entity->getImagenFicha() == null){
                 $error++;
                 $this->addFlash('error', 'Te falta introducir la imágen del estado.');
-                return true;     
+                return true;
             } 
             if($entity->getImagenFicha()->getError() == 1) {
                 $error++;

@@ -12,7 +12,7 @@ class RevisionesController extends BaseAdminController
     public function persistEntity($entity)
     {
         if($this->controlErrors($entity)){
-            return;
+            return $this->redirectToRoute('admin', ['entity' => 'Revisiones', 'action'=>'list']);  
         } else {
             if (method_exists($entity, 'getIdFichaSat')) {
                 $this->revisionTerminal($entity);
@@ -22,7 +22,11 @@ class RevisionesController extends BaseAdminController
 
     }
     public function updateEntity($entity){
-        $this->controlErrors($entity);
+        if($this->controlErrors($entity))
+        {
+            return $this->redirectToRoute('admin', ['entity' => 'Revisiones', 'action'=>'list']);  
+
+        }
         parent::updateEntity($entity);  
     }
     public function controlErrors($entity)
