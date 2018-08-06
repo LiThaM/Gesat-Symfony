@@ -3,3 +3,8 @@ parameters:
     mailer_host: smtp.gmail.com
     mailer_user: bitspontevedra@gmail.com
     mailer_password: L3g0l4s2017
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Acme\UserBundle\Entity\User
