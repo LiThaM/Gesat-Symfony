@@ -7,7 +7,7 @@ parameters:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Acme\UserBundle\Entity\User
-        from_email:
+    user_class: App\Entity\User
+    from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
