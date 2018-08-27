@@ -6,6 +6,7 @@
     <link href="{{ asset('login/vendor/select2/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('login/css/util.css') }}" rel="stylesheet">
     <link href="{{ asset('login/css/main.css') }}" rel="stylesheet">
+	<title>RepairNote || Gestiona tus reparaciones</title>
      {% endblock %}
 	    {% block body %}
 
@@ -13,20 +14,24 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="login/images/img-01.png" alt="IMG">
+					<a href="/login" ><img src="login/images/img-01.png" alt="IMG"></a>
 				</div>
-
+		
 				<form class="login100-form validate-form" action="{{ path("fos_user_security_check") }}" method="post">
-				   <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+					<input type="hidden" name="_target_path" value="/admin" />
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 					<span class="login100-form-title">
-						Inicia Sesion
+			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				{{  app.user.username }}
+					{% else %}				
+						Inicia Sesión
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Usuario Requerido">
 						<input class="input100" type="text" name="_username" placeholder="Usuario">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
 
@@ -37,29 +42,39 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-					
+
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Login
+							Entrar
 						</button>
 					</div>
-
 					<div class="text-center p-t-12">
 						<span class="txt1">
-							Forgot
+							Recordar 
 						</span>
 						<a class="txt2" href="#">
-							Username / Password?
+							Usuario / Password?
 						</a>
 					</div>
 
 					<div class="text-center p-t-136">
 						<a class="txt2" href="#">
-							Create your Account
+							Crear una cuenta
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
 				</form>
+				{% endif %}
+				{% if error %}
+				<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+					<div class="container-login100-form-btn">
+						<a href="/logout" class="login100-form-btn">
+							Logout
+						</a>
+					</div>			
+					{% endif %}
 			</div>
 		</div>
 	</div>
