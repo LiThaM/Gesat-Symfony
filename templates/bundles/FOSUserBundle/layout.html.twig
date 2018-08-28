@@ -1,4 +1,5 @@
     {% block stylesheets %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('login/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('login/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('login/vendor/animate/animate.css') }}" rel="stylesheet">
@@ -52,12 +53,12 @@
 						<span class="txt1">
 							Recordar 
 						</span>
-						<a class="txt2" href="#">
+						<a class="txt2" href="#" data-toggle="modal" data-target="#recordar">
 							Usuario / Password?
 						</a>
 					</div>
 
-					<div class="text-center p-t-136">
+					<div class="text-center p-t-15">
 						<a class="txt2" href="#" data-toggle="modal" data-target="#registrar">
 							Crear una cuenta
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
@@ -78,6 +79,30 @@
 			</div>
 		</div>
 	</div>
+	{# MODAL RECUPERA PASSWORD #}
+	<div class="modal fade" id="recordar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<h4 class="modal-title w-100 font-weight-bold">Recordar Usuario / Contraseña</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				 <div class="modal-body mx-3">	
+					<div class="wrap-input100 validate-input" data-validate = "Usuario Requerido">
+						<input class="input100" type="text" name="_email" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	{# MODAL RECUPERA PASSWORD FIN#}
 
 	{# MODAL REGISTRO #}
 	<div class="modal fade" id="registrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -90,26 +115,34 @@
                 </button>
             </div>
             <div class="modal-body mx-3">
-                <div class="md-form mb-5">
-                    <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="orangeForm-name" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
-                </div>
-                <div class="md-form mb-5">
-                    <i class="fa fa-envelope prefix grey-text"></i>
-                    <input type="email" id="orangeForm-email" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
-                </div>
-
-                <div class="md-form mb-4">
-                    <i class="fa fa-lock prefix grey-text"></i>
-                    <input type="password" id="orangeForm-pass" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
-                </div>
-
+					<div class="wrap-input100 validate-input" data-validate = "Usuario Requerido">
+						<input class="input100" type="text" name="_username" placeholder="Usuario">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+				<div class="wrap-input100 validate-input" data-validate = "Usuario Requerido">
+					<input class="input100" type="text" name="_email" placeholder="Email">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-envelope" aria-hidden="true"></i>
+					</span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Password es requerido">
+					<input class="input100" type="password" name="_password" placeholder="Password">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-lock" aria-hidden="true"></i>
+					</span>
+				</div>
+				<div class="form-check">
+					<input type="checkbox" class="form-check-input" data-validate="Condiciones generales requeridas." id="exampleCheck1">
+					<label class="form-check-label" for="exampleCheck1">Acepto las condiciones generales.</label>
+				</div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-deep-orange">Sign up</button>
+                <button class="login100-form-btn">Sign up</button>
             </div>
         </div>
     </div>
